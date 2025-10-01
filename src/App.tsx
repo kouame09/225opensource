@@ -107,7 +107,7 @@ function App() {
                   onClick={() => setSortBy('recent')}
                   className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
                     sortBy === 'recent'
-                      ? 'bg-primary-400 text-gray-900 shadow-lg shadow-primary-400/50'
+                      ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                   }`}
                 >
@@ -117,7 +117,7 @@ function App() {
                   onClick={() => setSortBy('popular')}
                   className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
                     sortBy === 'popular'
-                      ? 'bg-primary-400 text-gray-900 shadow-lg shadow-primary-400/50'
+                      ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                   }`}
                 >
@@ -127,7 +127,7 @@ function App() {
                   onClick={() => setSortBy('alphabetical')}
                   className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
                     sortBy === 'alphabetical'
-                      ? 'bg-primary-400 text-gray-900 shadow-lg shadow-primary-400/50'
+                      ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                   }`}
                 >
@@ -146,7 +146,7 @@ function App() {
                   onClick={() => setSelectedTech('')}
                   className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
                     selectedTech === ''
-                      ? 'bg-primary-400 text-gray-900 shadow-lg shadow-primary-400/50'
+                      ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                   }`}
                 >
@@ -158,7 +158,7 @@ function App() {
                     onClick={() => setSelectedTech(tech)}
                     className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
                       selectedTech === tech
-                        ? 'bg-primary-400 text-gray-900 shadow-lg shadow-primary-400/50'
+                        ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                         : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                     }`}
                   >
@@ -210,7 +210,7 @@ function App() {
 
       <button
         onClick={handleAddProject}
-        className="fixed bottom-8 right-8 bg-primary-400 text-gray-900 rounded-full p-5 shadow-2xl hover:shadow-primary-400/50 hover:bg-primary-300 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 group font-semibold"
+        className="fixed bottom-8 right-8 bg-primary-400 text-white rounded-full p-5 shadow-2xl hover:shadow-primary-400/50 hover:bg-primary-500 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 group font-semibold"
         aria-label="Ajouter un projet"
       >
         <Plus className="w-6 h-6" />

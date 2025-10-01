@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Plus, Sparkles, Users } from 'lucide-react';
+import { Github, Plus } from 'lucide-react';
 
 interface CTAProps {
   variant?: 'primary' | 'secondary' | 'hero';
@@ -24,48 +24,34 @@ const CTA: React.FC<CTAProps> = ({
 }) => {
   const variants = {
     primary: {
-      container: "bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 border-2 border-primary-200 dark:border-primary-800",
+      container: "bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800",
       title: "text-gray-900 dark:text-white",
       description: "text-gray-700 dark:text-gray-300",
-      primaryBtn: "bg-primary-400 hover:bg-primary-300 text-gray-900 shadow-lg shadow-primary-400/50 hover:shadow-primary-300/50",
-      secondaryBtn: "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-primary-300 dark:border-primary-600 hover:border-primary-400 hover:bg-primary-50 dark:hover:bg-gray-700"
+      primaryBtn: "bg-primary-400 hover:bg-primary-500 text-white",
+      secondaryBtn: "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700"
     },
     secondary: {
-      container: "bg-gradient-to-br from-secondary-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 border-2 border-secondary-200 dark:border-secondary-800",
+      container: "bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700",
       title: "text-gray-900 dark:text-white",
       description: "text-gray-600 dark:text-gray-400",
-      primaryBtn: "bg-secondary-500 hover:bg-secondary-400 text-white shadow-lg shadow-secondary-500/50 hover:shadow-secondary-400/50",
-      secondaryBtn: "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-secondary-300 dark:border-secondary-600 hover:border-secondary-400 hover:bg-secondary-50 dark:hover:bg-gray-700"
+      primaryBtn: "bg-secondary-500 hover:bg-secondary-600 text-white",
+      secondaryBtn: "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600"
     },
     hero: {
-      container: "bg-gradient-to-br from-primary-100 via-accent-50 to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-2 border-primary-300 dark:border-primary-700",
+      container: "bg-primary-50 dark:bg-gray-900 border border-primary-200 dark:border-primary-800",
       title: "text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4",
       description: "text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed",
-      primaryBtn: "bg-primary-400 hover:bg-primary-300 text-gray-900 shadow-xl shadow-primary-400/50 hover:shadow-primary-300/50 text-lg px-8 py-4",
-      secondaryBtn: "bg-transparent text-gray-700 dark:text-gray-300 border-2 border-primary-400 dark:border-primary-500 hover:bg-primary-400 hover:text-gray-900 dark:hover:text-white text-lg px-8 py-4"
+      primaryBtn: "bg-primary-400 hover:bg-primary-500 text-white text-lg px-8 py-4",
+      secondaryBtn: "bg-transparent text-gray-700 dark:text-gray-300 border-2 border-primary-400 dark:border-primary-500 hover:bg-primary-400 hover:text-white text-lg px-8 py-4"
     }
   };
 
   const currentVariant = variants[variant];
 
   return (
-    <div className={`relative overflow-hidden rounded-3xl p-8 md:p-12 ${currentVariant.container} ${className}`}>
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-4 right-4">
-          <Sparkles className="w-8 h-8 text-lime-400" />
-        </div>
-        <div className="absolute bottom-4 left-4">
-          <Users className="w-6 h-6 text-green-400" />
-        </div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="w-32 h-32 bg-gradient-to-br from-lime-200/30 to-green-200/30 rounded-full blur-xl"></div>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 text-center max-w-2xl mx-auto">
-        <h3 className={`font-bold mb-4 ${currentVariant.title}`}>
+    <div className={`rounded-3xl p-8 md:p-12 ${currentVariant.container} ${className}`}>
+      <div className="text-center max-w-2xl mx-auto">
+        <h3 className={`font-bold ${currentVariant.title}`}>
           {title}
         </h3>
 
@@ -76,7 +62,7 @@ const CTA: React.FC<CTAProps> = ({
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             onClick={primaryButtonAction}
-            className={`inline-flex items-center space-x-2 font-semibold rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-lime-400/30 ${currentVariant.primaryBtn}`}
+            className={`inline-flex items-center space-x-2 font-semibold rounded-full transition-all duration-200 ${currentVariant.primaryBtn}`}
           >
             <Github className="w-5 h-5" />
             <span>{primaryButtonText}</span>
@@ -84,16 +70,13 @@ const CTA: React.FC<CTAProps> = ({
 
           <button
             onClick={secondaryButtonAction}
-            className={`inline-flex items-center space-x-2 font-semibold rounded-full transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-lime-400/30 ${currentVariant.secondaryBtn}`}
+            className={`inline-flex items-center space-x-2 font-semibold rounded-full transition-all duration-200 ${currentVariant.secondaryBtn}`}
           >
             <Plus className="w-5 h-5" />
             <span>{secondaryButtonText}</span>
           </button>
         </div>
       </div>
-
-      {/* Bottom wave decoration */}
-      <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-lime-400 via-green-400 to-emerald-400"></div>
     </div>
   );
 };

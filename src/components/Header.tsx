@@ -18,7 +18,7 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
           <div className="flex items-center space-x-4">
             <button
               onClick={handleContribution}
-              className="inline-flex items-center space-x-2 px-5 py-2.5 bg-primary-400 text-gray-900 text-sm font-bold rounded-full hover:bg-primary-300 hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
+              className="inline-flex items-center space-x-2 px-5 py-2.5 bg-primary-400 text-white text-sm font-bold rounded-full hover:bg-primary-500 hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
             >
               <Github className="w-4 h-4" />
               <span>Contribuer</span>

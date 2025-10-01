@@ -12,7 +12,7 @@ const Hero = ({ searchQuery, setSearchQuery }: HeroProps) => {
         <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
           Projets Open Source
           <span className="block mt-3 text-primary-400">
-            Made in Côte d'Ivoire
+            Made in <span className="text-ivory-orange">Côte d'Ivoire</span>
           </span>
         </h2>
         <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-12">
