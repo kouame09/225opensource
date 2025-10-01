@@ -5,4 +5,7 @@ export interface Project {
   techStack: string[];
   author: string;
   githubUrl: string;
+  stars: number;
+  forks: number;
+  lastUpdate: string;
 }

@@ -9,6 +9,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTech, setSelectedTech] = useState<string>('');
+  const [sortBy, setSortBy] = useState<'recent' | 'popular' | 'alphabetical'>('recent');
 
   useEffect(() => {
     // Toggle dark mode class on html element
@@ -32,7 +33,10 @@ function App() {
             description: 'Plateforme de centralisation des projets open-source ivoiriens',
             techStack: ['React', 'TypeScript', 'TailwindCSS'],
             author: 'Dev Ivoirien',
-            githubUrl: 'https://github.com/example/ivoireos'
+            githubUrl: 'https://github.com/example/ivoireos',
+            stars: 245,
+            forks: 32,
+            lastUpdate: '2025-09-28'
           },
           {
             id: '2',
@@ -40,7 +44,10 @@ function App() {
             description: 'Application de suivi des transports en commun à Abidjan',
             techStack: ['React Native', 'Node.js', 'MongoDB'],
             author: 'Marie K.',
-            githubUrl: 'https://github.com/example/abidjan-transit'
+            githubUrl: 'https://github.com/example/abidjan-transit',
+            stars: 189,
+            forks: 45,
+            lastUpdate: '2025-09-25'
           },
           {
             id: '3',
@@ -48,7 +55,10 @@ function App() {
             description: 'Solution numérique pour les agriculteurs ivoiriens',
             techStack: ['Vue.js', 'Python', 'PostgreSQL'],
             author: 'Kouassi A.',
-            githubUrl: 'https://github.com/example/agritech-ci'
+            githubUrl: 'https://github.com/example/agritech-ci',
+            stars: 567,
+            forks: 89,
+            lastUpdate: '2025-09-30'
           },
           {
             id: '4',
@@ -56,7 +66,10 @@ function App() {
             description: 'Plateforme d\'éducation en ligne pour étudiants ivoiriens',
             techStack: ['Next.js', 'Firebase', 'TailwindCSS'],
             author: 'Aya B.',
-            githubUrl: 'https://github.com/example/educonnect'
+            githubUrl: 'https://github.com/example/educonnect',
+            stars: 423,
+            forks: 67,
+            lastUpdate: '2025-10-01'
           },
           {
             id: '5',
@@ -64,7 +77,10 @@ function App() {
             description: 'Marketplace pour artisans et commerçants locaux',
             techStack: ['Angular', 'Express', 'MySQL'],
             author: 'Yao T.',
-            githubUrl: 'https://github.com/example/ci-market'
+            githubUrl: 'https://github.com/example/ci-market',
+            stars: 312,
+            forks: 54,
+            lastUpdate: '2025-09-20'
           },
           {
             id: '6',
@@ -72,7 +88,10 @@ function App() {
             description: 'Système de gestion de dossiers médicaux électroniques',
             techStack: ['React', 'Django', 'Redis'],
             author: 'Dr. Diallo',
-            githubUrl: 'https://github.com/example/healthtrack-ci'
+            githubUrl: 'https://github.com/example/healthtrack-ci',
+            stars: 678,
+            forks: 112,
+            lastUpdate: '2025-09-27'
           }
         ];
 
@@ -100,9 +119,9 @@ function App() {
     return Array.from(techSet).sort();
   }, [projects]);
 
-  // Filter projects based on search query and selected technology
+  // Filter and sort projects based on search query, selected technology, and sort order
   const filteredProjects = useMemo(() => {
-    return projects.filter(project => {
+    let filtered = projects.filter(project => {
       const matchesSearch = searchQuery === '' ||
         project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -113,7 +132,22 @@ function App() {
 
       return matchesSearch && matchesTech;
     });
-  }, [projects, searchQuery, selectedTech]);
+
+    // Sort projects
+    if (sortBy === 'recent') {
+      filtered = [...filtered].sort((a, b) =>
+        new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
+      );
+    } else if (sortBy === 'popular') {
+      filtered = [...filtered].sort((a, b) => b.stars - a.stars);
+    } else if (sortBy === 'alphabetical') {
+      filtered = [...filtered].sort((a, b) =>
+        a.name.localeCompare(b.name, 'fr')
+      );
+    }
+
+    return filtered;
+  }, [projects, searchQuery, selectedTech, sortBy]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
@@ -191,8 +225,44 @@ function App() {
 
       {/* Filter Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        {/* Sort Filter */}
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Trier par:</span>
+          <button
+            onClick={() => setSortBy('recent')}
+            className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
+              sortBy === 'recent'
+                ? 'bg-lime-400 text-gray-900 shadow-lg shadow-lime-400/50'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+            }`}
+          >
+            Récent
+          </button>
+          <button
+            onClick={() => setSortBy('popular')}
+            className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
+              sortBy === 'popular'
+                ? 'bg-lime-400 text-gray-900 shadow-lg shadow-lime-400/50'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+            }`}
+          >
+            Populaire
+          </button>
+          <button
+            onClick={() => setSortBy('alphabetical')}
+            className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
+              sortBy === 'alphabetical'
+                ? 'bg-lime-400 text-gray-900 shadow-lg shadow-lime-400/50'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+            }`}
+          >
+            A à Z
+          </button>
+        </div>
+
+        {/* Technology Filter */}
         <div className="flex flex-wrap items-center gap-3">
-          <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Filtrer par technologie:</span>
+          <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Technologie:</span>
           <button
             onClick={() => setSelectedTech('')}
             className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${

@@ -1,4 +1,4 @@
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Star, GitFork } from 'lucide-react';
 import { Project } from '../types';
 
 interface ProjectCardProps {
@@ -10,10 +10,21 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     <div className="group bg-white dark:bg-gray-900 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-800 transform hover:-translate-y-2">
       <div className="p-7">
         {/* Project Header */}
-        <div className="flex justify-between items-start mb-4">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-lime-400 transition-colors">
+        <div className="mb-4">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-lime-400 transition-colors mb-3">
             {project.name}
           </h3>
+          {/* Stats */}
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1.5 text-gray-600 dark:text-gray-400">
+              <Star className="w-4 h-4" />
+              <span className="text-sm font-semibold">{project.stars}</span>
+            </div>
+            <div className="flex items-center gap-1.5 text-gray-600 dark:text-gray-400">
+              <GitFork className="w-4 h-4" />
+              <span className="text-sm font-semibold">{project.forks}</span>
+            </div>
+          </div>
         </div>
 
         {/* Description */}
