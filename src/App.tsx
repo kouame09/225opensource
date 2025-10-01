@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Moon, Sun, Plus, ExternalLink } from 'lucide-react';
+import { Moon, Sun, Plus, Github } from 'lucide-react';
 import ProjectCard from './components/ProjectCard';
 import { Project } from './types';
 
@@ -85,9 +85,8 @@ function App() {
     fetchProjects();
   }, []);
 
-  const handleAddProject = () => {
-    // Redirect to GitHub repo for contributing
-    window.open('https://github.com/yourusername/ivoireos/blob/main/projects.json', '_blank');
+  const handleContribution = () => {
+    window.open('https://github.com/yourusername/ivoireos', '_blank');
   };
 
   return (
@@ -96,35 +95,33 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="flex items-center space-x-12">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Côte d'Ivoire Dev
-              </h1>
-              <div className="hidden md:flex space-x-8">
-                <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">
-                  Accueil
-                </a>
-                <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">
-                  Projets
-                </a>
-                <a href="#" onClick={handleAddProject} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">
-                  Ajouter un projet
-                </a>
-              </div>
-            </div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Côte d'Ivoire Dev
+            </h1>
 
-            {/* Dark Mode Toggle */}
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-3 rounded-2xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? (
-                <Sun className="w-5 h-5 text-lime-400" />
-              ) : (
-                <Moon className="w-5 h-5 text-gray-700" />
-              )}
-            </button>
+            <div className="flex items-center space-x-4">
+              {/* Contribution Button */}
+              <button
+                onClick={handleContribution}
+                className="inline-flex items-center space-x-2 px-5 py-2.5 bg-lime-400 text-gray-900 text-sm font-bold rounded-full hover:bg-lime-300 hover:shadow-lg hover:shadow-lime-400/50 transform hover:scale-105 transition-all duration-200"
+              >
+                <Github className="w-4 h-4" />
+                <span>Contribution</span>
+              </button>
+
+              {/* Dark Mode Toggle */}
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className="p-3 rounded-2xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
+                aria-label="Toggle dark mode"
+              >
+                {darkMode ? (
+                  <Sun className="w-5 h-5 text-lime-400" />
+                ) : (
+                  <Moon className="w-5 h-5 text-gray-700" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -161,7 +158,7 @@ function App() {
 
       {/* Floating Add Button */}
       <button
-        onClick={handleAddProject}
+        onClick={handleContribution}
         className="fixed bottom-8 right-8 bg-lime-400 text-gray-900 rounded-full p-5 shadow-2xl hover:shadow-lime-400/50 hover:bg-lime-300 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 group font-semibold"
         aria-label="Ajouter un projet"
       >
