@@ -9,5 +9,7 @@
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 }

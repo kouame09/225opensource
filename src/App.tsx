@@ -3,6 +3,7 @@ import { Moon, Sun, Plus, Github, Search, X } from 'lucide-react';
 import ProjectCard from './components/ProjectCard';
 import { Project } from './types';
 import { mockProjects } from './data';
+import CTA from './components/CTA';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -41,6 +42,10 @@ function App() {
 
   const handleContribution = () => {
     window.open('https://github.com/kouame09/Ivoire_os', '_blank');
+  };
+
+  const handleAddProject = () => {
+    window.open('https://github.com/kouame09/Ivoire_os/blob/main/src/data.ts', '_blank');
   };
 
   // Get all unique technologies from projects
@@ -99,7 +104,7 @@ function App() {
                 className="inline-flex items-center space-x-2 px-5 py-2.5 bg-lime-400 text-gray-900 text-sm font-bold rounded-full hover:bg-lime-300 hover:shadow-lg hover:shadow-lime-400/50 transform hover:scale-105 transition-all duration-200"
               >
                 <Github className="w-4 h-4" />
-                <span>Contribution</span>
+                <span>Contribuer</span>
               </button>
 
               {/* Dark Mode Toggle */}
@@ -158,7 +163,6 @@ function App() {
 
       {/* Filter Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        {/* Sort Filter */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Trier par:</span>
           <button
@@ -248,9 +252,22 @@ function App() {
         )}
       </main>
 
+      {/* Call to Action Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <CTA
+          variant="hero"
+          title="Prêt à contribuer ?"
+          description="Que vous soyez développeur, designer ou simplement passionné par la tech ivoirienne, votre contribution compte. Rejoignez-nous pour enrichir l'écosystème open-source de Côte d'Ivoire."
+          primaryButtonText="Contribuer au projet"
+          primaryButtonAction={handleContribution}
+          secondaryButtonText="Ajouter votre projet"
+          secondaryButtonAction={handleAddProject}
+        />
+      </div>
+
       {/* Floating Add Button */}
       <button
-        onClick={handleContribution}
+        onClick={handleAddProject}
         className="fixed bottom-8 right-8 bg-lime-400 text-gray-900 rounded-full p-5 shadow-2xl hover:shadow-lime-400/50 hover:bg-lime-300 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 group font-semibold"
         aria-label="Ajouter un projet"
       >
