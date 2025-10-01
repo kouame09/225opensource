@@ -1,6 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Moon, Sun, Plus, Github, Search, X } from 'lucide-react';
+import { Plus, ArrowUpDown, Tag } from 'lucide-react';
 import ProjectCard from './components/ProjectCard';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Footer from './components/Footer';
 import { Project } from './types';
 import { mockProjects } from './data';
 import CTA from './components/CTA';
@@ -14,7 +17,6 @@ function App() {
   const [sortBy, setSortBy] = useState<'recent' | 'popular' | 'alphabetical'>('recent');
 
   useEffect(() => {
-    // Toggle dark mode class on html element
     if (darkMode) {
       document.documentElement.classList.add('dark');
     } else {
@@ -23,12 +25,8 @@ function App() {
   }, [darkMode]);
 
   useEffect(() => {
-    // Fetch projects from GitHub JSON file
     const fetchProjects = async () => {
       try {
-        // For demo purposes, using mock data
-        // Replace this URL with your actual GitHub raw JSON file
-
         setProjects(mockProjects);
         setLoading(false);
       } catch (error) {
@@ -48,18 +46,16 @@ function App() {
     window.open('https://github.com/kouame09/Ivoire_os/blob/main/src/data.ts', '_blank');
   };
 
-  // Get all unique technologies from projects
   const allTechnologies = useMemo(() => {
     const techSet = new Set<string>();
-    projects.forEach(project => {
-      project.techStack.forEach(tech => techSet.add(tech));
+    projects.forEach((project: Project) => {
+      project.techStack.forEach((tech: string) => techSet.add(tech));
     });
     return Array.from(techSet).sort();
   }, [projects]);
 
-  // Filter and sort projects based on search query, selected technology, and sort order
   const filteredProjects = useMemo(() => {
-    let filtered = projects.filter(project => {
+    let filtered = projects.filter((project: Project) => {
       const matchesSearch = searchQuery === '' ||
         project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -71,162 +67,110 @@ function App() {
       return matchesSearch && matchesTech;
     });
 
-    // Sort projects
     if (sortBy === 'recent') {
-      filtered = [...filtered].sort((a, b) =>
+      filtered = [...filtered].sort((a: Project, b: Project) =>
         new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
       );
     } else if (sortBy === 'popular') {
-      filtered = [...filtered].sort((a, b) => b.stars - a.stars);
+      filtered = [...filtered].sort((a: Project, b: Project) => b.stars - a.stars);
     } else if (sortBy === 'alphabetical') {
-      filtered = [...filtered].sort((a, b) =>
+      filtered = [...filtered].sort((a: Project, b: Project) =>
         a.name.localeCompare(b.name, 'fr')
       );
     }
-
     return filtered;
   }, [projects, searchQuery, selectedTech, sortBy]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Côte d'Ivoire Dev
-            </h1>
+      <Header
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        handleContribution={handleContribution}
+      />
 
-            <div className="flex items-center space-x-4">
-              {/* Contribution Button */}
-              <button
-                onClick={handleContribution}
-                className="inline-flex items-center space-x-2 px-5 py-2.5 bg-lime-400 text-gray-900 text-sm font-bold rounded-full hover:bg-lime-300 hover:shadow-lg hover:shadow-lime-400/50 transform hover:scale-105 transition-all duration-200"
-              >
-                <Github className="w-4 h-4" />
-                <span>Contribuer</span>
-              </button>
+      <Hero
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
 
-              {/* Dark Mode Toggle */}
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-3 rounded-2xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
-                aria-label="Toggle dark mode"
-              >
-                {darkMode ? (
-                  <Sun className="w-5 h-5 text-lime-400" />
-                ) : (
-                  <Moon className="w-5 h-5 text-gray-700" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <div className="pt-32 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
-            Projets Open Source
-            <span className="block mt-3 text-lime-400">
-              Made in Côte d'Ivoire
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-12">
-            Découvrez les projets innovants créés par la communauté des développeurs ivoiriens
-          </p>
-
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto">
-            <div className="relative">
-              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Rechercher un projet, auteur ou description..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-14 pr-12 py-4 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-800 rounded-full text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-lime-400 transition-colors duration-200 text-base font-medium"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Filter Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Trier par:</span>
-          <button
-            onClick={() => setSortBy('recent')}
-            className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
-              sortBy === 'recent'
-                ? 'bg-lime-400 text-gray-900 shadow-lg shadow-lime-400/50'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
-          >
-            Récent
-          </button>
-          <button
-            onClick={() => setSortBy('popular')}
-            className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
-              sortBy === 'popular'
-                ? 'bg-lime-400 text-gray-900 shadow-lg shadow-lime-400/50'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
-          >
-            Populaire
-          </button>
-          <button
-            onClick={() => setSortBy('alphabetical')}
-            className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
-              sortBy === 'alphabetical'
-                ? 'bg-lime-400 text-gray-900 shadow-lg shadow-lime-400/50'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
-          >
-            A à Z
-          </button>
-        </div>
+        <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-3xl p-6 border border-gray-200 dark:border-gray-800">
+          <div className="flex flex-col space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                <ArrowUpDown className="w-4 h-4 text-primary-400" />
+                <span>Trier par:</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSortBy('recent')}
+                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
+                    sortBy === 'recent'
+                      ? 'bg-primary-400 text-gray-900 shadow-lg shadow-primary-400/50'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  Récent
+                </button>
+                <button
+                  onClick={() => setSortBy('popular')}
+                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
+                    sortBy === 'popular'
+                      ? 'bg-primary-400 text-gray-900 shadow-lg shadow-primary-400/50'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  Populaire
+                </button>
+                <button
+                  onClick={() => setSortBy('alphabetical')}
+                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
+                    sortBy === 'alphabetical'
+                      ? 'bg-primary-400 text-gray-900 shadow-lg shadow-primary-400/50'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  A à Z
+                </button>
+              </div>
+            </div>
 
-        {/* Technology Filter */}
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Technologie:</span>
-          <button
-            onClick={() => setSelectedTech('')}
-            className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
-              selectedTech === ''
-                ? 'bg-lime-400 text-gray-900 shadow-lg shadow-lime-400/50'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
-          >
-            Tous
-          </button>
-          {allTechnologies.map((tech) => (
-            <button
-              key={tech}
-              onClick={() => setSelectedTech(tech)}
-              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
-                selectedTech === tech
-                  ? 'bg-lime-400 text-gray-900 shadow-lg shadow-lime-400/50'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-              }`}
-            >
-              {tech}
-            </button>
-          ))}
+            <div className="flex flex-col space-y-4">
+              <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                <Tag className="w-4 h-4 text-primary-400" />
+                <span>Technologies:</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedTech('')}
+                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
+                    selectedTech === ''
+                      ? 'bg-primary-400 text-gray-900 shadow-lg shadow-primary-400/50'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  Toutes
+                </button>
+                {allTechnologies.map((tech: string) => (
+                  <button
+                    key={tech}
+                    onClick={() => setSelectedTech(tech)}
+                    className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
+                      selectedTech === tech
+                        ? 'bg-primary-400 text-gray-900 shadow-lg shadow-primary-400/50'
+                        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                    }`}
+                  >
+                    {tech}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Projects Grid */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         {loading ? (
           <div className="flex justify-center items-center h-64">
@@ -244,7 +188,7 @@ function App() {
               <span className="font-semibold">{filteredProjects.length}</span> projet{filteredProjects.length > 1 ? 's' : ''} trouvé{filteredProjects.length > 1 ? 's' : ''}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project) => (
+              {filteredProjects.map((project: Project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
             </div>
@@ -252,7 +196,6 @@ function App() {
         )}
       </main>
 
-      {/* Call to Action Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <CTA
           variant="hero"
@@ -265,10 +208,9 @@ function App() {
         />
       </div>
 
-      {/* Floating Add Button */}
       <button
         onClick={handleAddProject}
-        className="fixed bottom-8 right-8 bg-lime-400 text-gray-900 rounded-full p-5 shadow-2xl hover:shadow-lime-400/50 hover:bg-lime-300 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 group font-semibold"
+        className="fixed bottom-8 right-8 bg-primary-400 text-gray-900 rounded-full p-5 shadow-2xl hover:shadow-primary-400/50 hover:bg-primary-300 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 group font-semibold"
         aria-label="Ajouter un projet"
       >
         <Plus className="w-6 h-6" />
@@ -276,6 +218,8 @@ function App() {
           Ajouter un projet
         </span>
       </button>
+
+      <Footer />
     </div>
   );
 }

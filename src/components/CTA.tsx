@@ -24,25 +24,25 @@ const CTA: React.FC<CTAProps> = ({
 }) => {
   const variants = {
     primary: {
-      container: "bg-gradient-to-br from-lime-50 to-green-50 dark:from-gray-900 dark:to-gray-800 border-2 border-lime-200 dark:border-lime-800",
+      container: "bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 border-2 border-primary-200 dark:border-primary-800",
       title: "text-gray-900 dark:text-white",
       description: "text-gray-700 dark:text-gray-300",
-      primaryBtn: "bg-lime-400 hover:bg-lime-300 text-gray-900 shadow-lg shadow-lime-400/50 hover:shadow-lime-300/50",
-      secondaryBtn: "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-lime-300 dark:border-lime-600 hover:border-lime-400 hover:bg-lime-50 dark:hover:bg-gray-700"
+      primaryBtn: "bg-primary-400 hover:bg-primary-300 text-gray-900 shadow-lg shadow-primary-400/50 hover:shadow-primary-300/50",
+      secondaryBtn: "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-primary-300 dark:border-primary-600 hover:border-primary-400 hover:bg-primary-50 dark:hover:bg-gray-700"
     },
     secondary: {
-      container: "bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800",
+      container: "bg-gradient-to-br from-secondary-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 border-2 border-secondary-200 dark:border-secondary-800",
       title: "text-gray-900 dark:text-white",
       description: "text-gray-600 dark:text-gray-400",
-      primaryBtn: "bg-blue-500 hover:bg-blue-400 text-white shadow-lg shadow-blue-500/50 hover:shadow-blue-400/50",
-      secondaryBtn: "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-blue-300 dark:border-blue-600 hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700"
+      primaryBtn: "bg-secondary-500 hover:bg-secondary-400 text-white shadow-lg shadow-secondary-500/50 hover:shadow-secondary-400/50",
+      secondaryBtn: "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-secondary-300 dark:border-secondary-600 hover:border-secondary-400 hover:bg-secondary-50 dark:hover:bg-gray-700"
     },
     hero: {
-      container: "bg-gradient-to-br from-lime-100 via-green-50 to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-2 border-lime-300 dark:border-lime-700",
+      container: "bg-gradient-to-br from-primary-100 via-accent-50 to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-2 border-primary-300 dark:border-primary-700",
       title: "text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4",
       description: "text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed",
-      primaryBtn: "bg-lime-400 hover:bg-lime-300 text-gray-900 shadow-xl shadow-lime-400/50 hover:shadow-lime-300/50 text-lg px-8 py-4",
-      secondaryBtn: "bg-transparent text-gray-700 dark:text-gray-300 border-2 border-lime-400 dark:border-lime-500 hover:bg-lime-400 hover:text-gray-900 dark:hover:text-white text-lg px-8 py-4"
+      primaryBtn: "bg-primary-400 hover:bg-primary-300 text-gray-900 shadow-xl shadow-primary-400/50 hover:shadow-primary-300/50 text-lg px-8 py-4",
+      secondaryBtn: "bg-transparent text-gray-700 dark:text-gray-300 border-2 border-primary-400 dark:border-primary-500 hover:bg-primary-400 hover:text-gray-900 dark:hover:text-white text-lg px-8 py-4"
     }
   };
 
