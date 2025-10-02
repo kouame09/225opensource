@@ -153,20 +153,4 @@ const WelcomeModal = ({ isOpen, onClose }: WelcomeModalProps) => {
   );
 };
 
-// Demo pour visualiser le modal
-export default function App() {
-  const [isOpen, setIsOpen] = useState(true);
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center p-4">
-      <button
-        onClick={() => setIsOpen(true)}
-        className="px-6 py-3 bg-green-500 dark:bg-green-600 text-white font-semibold rounded-xl hover:bg-green-600 dark:hover:bg-green-700 hover:scale-105 transition-all duration-200"
-      >
-        Ouvrir le modal
-      </button>
-      
-      <WelcomeModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-    </div>
-  );
-}
+export default WelcomeModal;
