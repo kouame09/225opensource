@@ -29,6 +29,75 @@
     <meta name="twitter:site" content="@225OpenSource" />
     
     <title>225OS - Open Source Project Hub</title>
+
+    <!-- Custom Scrollbar Styles -->
+    <style>
+      /* Webkit Scrollbar Styling */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+
+      ::-webkit-scrollbar-track:hover {
+        background: #e2e8f0;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        border-radius: 6px;
+        border: 2px solid #f1f5f9;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #16a34a, #15803d);
+        border: 2px solid #e2e8f0;
+      }
+
+      ::-webkit-scrollbar-corner {
+        background: #f1f5f9;
+      }
+
+      /* Firefox Scrollbar Styling */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #22c55e #f1f5f9;
+      }
+
+      /* Dark mode scrollbar */
+      .dark ::-webkit-scrollbar-track {
+        background: #1e293b;
+      }
+
+      .dark ::-webkit-scrollbar-track:hover {
+        background: #334155;
+      }
+
+      .dark ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        border: 2px solid #1e293b;
+      }
+
+      .dark ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #16a34a, #15803d);
+        border: 2px solid #334155;
+      }
+
+      .dark ::-webkit-scrollbar-corner {
+        background: #1e293b;
+      }
+
+      .dark * {
+        scrollbar-color: #22c55e #1e293b;
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

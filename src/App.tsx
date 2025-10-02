@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { ArrowUpDown, Tag } from 'lucide-react';
+import WelcomeModal from './components/WelcomeModal';
 import ProjectGrid from './components/ProjectGrid';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -12,6 +13,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTech, setSelectedTech] = useState<string>('');
   const [sortBy, setSortBy] = useState<'recent' | 'popular' | 'alphabetical'>('recent');
@@ -23,6 +25,14 @@ function App() {
       document.documentElement.classList.remove('dark');
     }
   }, [darkMode]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowWelcomeModal(true);
+    }, 2000); // Afficher le modal après 2 secondes
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -189,6 +199,12 @@ function App() {
       </div>
 
       <Footer />
+
+      {/* Modal de bienvenue */}
+      <WelcomeModal
+        isOpen={showWelcomeModal}
+        onClose={() => setShowWelcomeModal(false)}
+      />
     </div>
   );
 }
