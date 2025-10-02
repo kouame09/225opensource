@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import { Project } from './types';
 import { mockProjects } from './data';
 import CTA from './components/CTA';
+import Contributors from './components/Contributors';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -184,19 +185,20 @@ function App() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <ProjectGrid projects={filteredProjects} loading={loading} />
       </main>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <CTA
           variant="hero"
           title="Prêt à contribuer ?"
           description="Que vous soyez développeur web, mobile, backend ou fullstack, data analyst, data scientist, cybersécurité, DevOps..., votre contribution compte.
-          Rejoignez-nous pour enrichir l’écosystème open-source ivoirien."
+          Rejoignez-nous pour enrichir l'écosystème open-source ivoirien."
           primaryButtonText="Contribuer au projet"
           primaryButtonAction={handleContribution}
           secondaryButtonText="Ajouter votre projet"
           secondaryButtonAction={handleAddProject}
         />
       </div>
+
+      <Contributors />
 
       <Footer />
 
