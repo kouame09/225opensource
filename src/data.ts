@@ -3,11 +3,11 @@ import { Project } from './types';
 export const mockProjects: Project[] = [
   {
     id: '1',
-    name: 'IvoireOS',
+    name: '225OpenSource',
     description: 'Plateforme de centralisation des projets open-source ivoiriens',
     techStack: ['React', 'TypeScript', 'TailwindCSS'],
     author: 'Dev Ivoirien',
-    githubUrl: 'https://github.com/example/ivoireos',
+    githubUrl: 'https://github.com/example/225OpenSource',
     stars: 245,
     forks: 32,
     lastUpdate: '2025-09-28'

@@ -14,11 +14,11 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
           <div className="flex items-center space-x-1">
             <img
               src="/logo.png"
-              alt="IvoireOS Logo"
+              alt="225OpenSource Logo"
               className="w-10 h-10 rounded-lg"
             />
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-              IvoireOS
+              225OS
             </h1>
           </div>
 
