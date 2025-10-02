@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Plus, ArrowUpDown, Tag } from 'lucide-react';
-import ProjectCard from './components/ProjectCard';
+import { ArrowUpDown, Tag } from 'lucide-react';
+import ProjectGrid from './components/ProjectGrid';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
@@ -172,52 +172,21 @@ function App() {
       </div>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-        {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lime-400"></div>
-          </div>
-        ) : filteredProjects.length === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-xl text-gray-500 dark:text-gray-400">
-              Aucun projet trouvé pour votre recherche
-            </p>
-          </div>
-        ) : (
-          <>
-            <div className="mb-6 text-sm text-gray-600 dark:text-gray-400">
-              <span className="font-semibold">{filteredProjects.length}</span> projet{filteredProjects.length > 1 ? 's' : ''} trouvé{filteredProjects.length > 1 ? 's' : ''}
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project: Project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </>
-        )}
+        <ProjectGrid projects={filteredProjects} loading={loading} />
       </main>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <CTA
           variant="hero"
           title="Prêt à contribuer ?"
-          description="Que vous soyez développeur, designer ou simplement passionné par la tech ivoirienne, votre contribution compte. Rejoignez-nous pour enrichir l'écosystème open-source de Côte d'Ivoire."
+          description="Que vous soyez développeur web, mobile, backend ou fullstack, data analyst, data scientist, cybersécurité, DevOps..., votre contribution compte.
+          Rejoignez-nous pour enrichir l’écosystème open-source ivoirien."
           primaryButtonText="Contribuer au projet"
           primaryButtonAction={handleContribution}
           secondaryButtonText="Ajouter votre projet"
           secondaryButtonAction={handleAddProject}
         />
       </div>
-
-      <button
-        onClick={handleAddProject}
-        className="fixed bottom-8 right-8 bg-primary-400 text-white rounded-full p-5 shadow-2xl hover:shadow-primary-400/50 hover:bg-primary-500 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 group font-semibold"
-        aria-label="Ajouter un projet"
-      >
-        <Plus className="w-6 h-6" />
-        <span className="hidden group-hover:inline-block pr-2 whitespace-nowrap">
-          Ajouter un projet
-        </span>
-      </button>
 
       <Footer />
     </div>

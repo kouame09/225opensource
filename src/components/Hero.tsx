@@ -16,7 +16,7 @@ const Hero = ({ searchQuery, setSearchQuery }: HeroProps) => {
           </span>
         </h2>
         <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-12">
-          Une vitrine complète des projets open-source développés par la communauté tech ivoirienne. Découvrez, contribuez et connectez-vous avec d'autres développeurs passionnés.
+        Repertoire de projets open-source pour la communauté tech ivoirienne. Découvrez et contribuez à des projets passionnants.
         </p>
 
         <div className="max-w-2xl mx-auto">
