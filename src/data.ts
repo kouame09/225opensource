@@ -3,8 +3,8 @@ import { Project } from './types';
 export const mockProjects: Project[] = [
   {
     id: '1',
-    name: '225OpenSource',
-    description: 'Plateforme de centralisation des projets open-source ivoiriens',
+    name: 'Ediota',
+    description: 'Plateforme de gestion financière',
     techStack: ['React', 'TypeScript', 'TailwindCSS'],
     author: 'Dev Ivoirien',
     githubUrl: 'https://github.com/example/225OpenSource',
