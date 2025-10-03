@@ -51,7 +51,7 @@ function Contributors() {
         <div className="text-center mb-8">
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4">Nos contributeurs</h1>
           <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Découvrez les talents qui font vivre la communauté tech ivoirienne
+            Merci aux talents qui font vivre la communauté tech ivoirienne
           </p>
         </div>
 
