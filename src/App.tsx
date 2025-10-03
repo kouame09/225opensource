@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { ArrowUpDown, Tag } from 'lucide-react';
+import { ArrowUpDown, Tag, Plus } from 'lucide-react';
 import WelcomeModal from './components/WelcomeModal';
 import ProjectGrid from './components/ProjectGrid';
 import Header from './components/Header';
@@ -116,31 +116,28 @@ function App() {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => setSortBy('recent')}
-                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
-                    sortBy === 'recent'
+                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${sortBy === 'recent'
                       ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                  }`}
+                    }`}
                 >
                   Récent
                 </button>
                 <button
                   onClick={() => setSortBy('popular')}
-                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
-                    sortBy === 'popular'
+                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${sortBy === 'popular'
                       ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                  }`}
+                    }`}
                 >
                   Populaire
                 </button>
                 <button
                   onClick={() => setSortBy('alphabetical')}
-                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
-                    sortBy === 'alphabetical'
+                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${sortBy === 'alphabetical'
                       ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                  }`}
+                    }`}
                 >
                   A à Z
                 </button>
@@ -155,11 +152,10 @@ function App() {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => setSelectedTech('')}
-                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
-                    selectedTech === ''
+                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${selectedTech === ''
                       ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                  }`}
+                    }`}
                 >
                   Toutes
                 </button>
@@ -167,11 +163,10 @@ function App() {
                   <button
                     key={tech}
                     onClick={() => setSelectedTech(tech)}
-                    className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
-                      selectedTech === tech
+                    className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${selectedTech === tech
                         ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                         : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                    }`}
+                      }`}
                   >
                     {tech}
                   </button>
@@ -201,6 +196,20 @@ function App() {
       <Contributors />
 
       <Footer />
+
+      {/* Bouton flottant vers data.ts */}
+      <button
+        onClick={() => window.open('https://github.com/kouame09/Ivoire_os/blob/main/src/data.ts', '_blank')}
+        className="group fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 dark:bg-green-500 dark:hover:bg-green-600 text-white rounded-full hover:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out w-12 h-12 hover:w-auto hover:pr-4 flex items-center justify-center overflow-hidden"
+        title="Voir le fichier data.ts sur GitHub"
+      >
+        <div className="flex items-center justify-center w-12 h-12 flex-shrink-0">
+          <Plus className="w-6 h-6" />
+        </div>
+        <span className="max-w-0 group-hover:max-w-[200px] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out text-sm font-semibold whitespace-nowrap pr-1">
+          Ajouter un projet
+        </span>
+      </button>
 
       {/* Modal de bienvenue */}
       <WelcomeModal
