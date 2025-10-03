@@ -2,9 +2,9 @@
 const contributors = [
   {
     id: 1,
-    name: 'Sarah Chen',
-    role: 'Lead Developer',
-    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400',
+    name: 'Prince Kouamé',
+    role: 'Sofware Developer',
+    avatar: '/pic-prince.jpg',
     contributions: 247
   },
   {
