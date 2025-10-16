@@ -50,11 +50,11 @@ function App() {
   }, []);
 
   const handleContribution = () => {
-    window.open('https://github.com/kouame09/Ivoire_os', '_blank');
+    window.open('https://github.com/kouame09/225opensource', '_blank');
   };
 
   const handleAddProject = () => {
-    window.open('https://github.com/kouame09/Ivoire_os/blob/main/src/data.ts', '_blank');
+    window.open('https://github.com/kouame09/225opensource/blob/main/src/data.ts', '_blank');
   };
 
   const allTechnologies = useMemo(() => {
@@ -199,7 +199,7 @@ function App() {
 
       {/* Bouton flottant vers data.ts */}
       <button
-        onClick={() => window.open('https://github.com/kouame09/Ivoire_os/blob/main/src/data.ts', '_blank')}
+        onClick={() => window.open('https://github.com/kouame09/225opensource/blob/main/src/data.ts', '_blank')}
         className="group fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 dark:bg-green-500 dark:hover:bg-green-600 text-white rounded-full hover:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out w-12 h-12 hover:w-auto hover:pr-4 flex items-center justify-center overflow-hidden"
         title="Voir le fichier data.ts sur GitHub"
       >
