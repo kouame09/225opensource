@@ -29,7 +29,11 @@ function App() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowWelcomeModal(true);
+      // Vérifier si l'utilisateur a déjà fermé le modal
+      const welcomeModalClosed = localStorage.getItem('welcomeModalClosed');
+      if (!welcomeModalClosed) {
+        setShowWelcomeModal(true);
+      }
     }, 2000); // Afficher le modal après 2 secondes
 
     return () => clearTimeout(timer);
@@ -214,7 +218,10 @@ function App() {
       {/* Modal de bienvenue */}
       <WelcomeModal
         isOpen={showWelcomeModal}
-        onClose={() => setShowWelcomeModal(false)}
+        onClose={() => {
+          setShowWelcomeModal(false);
+          localStorage.setItem('welcomeModalClosed', 'true');
+        }}
       />
     </div>
   );
