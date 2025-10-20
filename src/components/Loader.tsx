@@ -32,7 +32,7 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
         {/* Logo animé */}
         <div className="flex items-center justify-center space-x-1 sm:space-x-2">
           {text.split('').map((char, index) => {
-            const isOrangePart = index < 3; // "225" = indices 0, 1, 2
+            const isOrangePart = index < 3; 
             return (
               <span
                 key={index}
