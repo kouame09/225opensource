@@ -66,16 +66,16 @@ export const mockProjects: Project[] = [
     forks: 1,
     lastUpdate: '2025-10-18'
   },
-  {
+    {
     id: '2',
-    name: 'Abidjan Transit',
-    description: 'Application de suivi des transports en commun à Abidjan',
-    techStack: ['React Native', 'Node.js', 'MongoDB'],
-    author: 'Marie K.',
-    githubUrl: 'https://github.com/example/abidjan-transit',
+    name: 'Snake Game',
+    description: 'Jeu snake game dans le ne navigateur.',
+    techStack: ['React', 'TypeScript', 'TailwindCSS'],
+    author: 'Prince K.',
+    githubUrl: 'https://github.com/kouame09/snakeGameClone',
     stars: 189,
     forks: 45,
-    lastUpdate: '2025-09-25'
+    lastUpdate: '2025-01-25'
   },
   {
     id: '3',
