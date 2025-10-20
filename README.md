@@ -45,13 +45,60 @@ Une fois le serveur démarré, vous pouvez :
 
 ## Contribution
 
-Nous accueillons les contributions de la communauté ! Pour contribuer :
+Nous accueillons les contributions de la communauté ! Il y a plusieurs façons de contribuer :
+
+### Ajouter votre projet
+
+Vous avez développé un projet open-source ? Ajoutez-le à notre répertoire !
+
+1. **Éditez le fichier `src/data.ts`**
+   ```bash
+   # Dans votre fork du projet
+   nano src/data.ts  # ou utilisez votre éditeur préféré
+   ```
+
+2. **Ajoutez votre projet** en suivant le format spécifié dans les commentaires du fichier `src/data.ts`
+
+3. **Testez vos changements** :
+   ```bash
+   npm run dev
+   ```
+
+4. **Créez une Pull Request** avec une description claire de votre projet
+
+### Contribuer au code
+
+Pour les améliorations du code source :
 
 1. Forkez le projet
 2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
 3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
 4. Pushez vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrez une Pull Request
+
+### Signaler un problème
+
+Vous avez trouvé un bug ou avez une suggestion ? [Ouvrez une issue](https://github.com/kouame09/225opensource/issues) sur GitHub.
+
+## Format des projets
+
+Chaque projet doit respecter l'interface `Project` définie dans `src/types/index.ts` :
+
+```typescript
+interface Project {
+  id: string;           // Identifiant unique
+  name: string;         // Nom du projet
+  description: string;  // Description courte
+  techStack: string[];  // Technologies utilisées
+  author: string;       // Votre nom/pseudo
+  githubUrl: string;    // Lien vers le repo GitHub
+  stars: number;        // Nombre d'étoiles GitHub
+  forks: number;        // Nombre de forks GitHub
+  lastUpdate: string;   // Format: YYYY-MM-DD
+}
+```
+
+Consultez les commentaires détaillés dans le fichier `src/data.ts` pour plus d'instructions.
 
 ## Technologies utilisées
 
