@@ -82,7 +82,7 @@ export const mockProjects: Project[] = [
     name: 'AgriTech CI',
     description: 'Solution numérique pour les agriculteurs ivoiriens',
     techStack: ['Vue.js', 'Python', 'PostgreSQL'],
-    author: 'Kouassi A.',
+    author: 'Kouassi S.',
     githubUrl: 'https://github.com/example/agritech-ci',
     stars: 567,
     forks: 89,
