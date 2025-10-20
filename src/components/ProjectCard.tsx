@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ExternalLink, Star, GitFork } from 'lucide-react';
 import { Project } from '../types';
 
@@ -6,9 +7,43 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  // Générer l'URL de l'image Open Graph du repo GitHub
+  const getGitHubPreviewUrl = (githubUrl: string) => {
+    if (project.imageUrl) return project.imageUrl;
+    // Extraire le owner et repo depuis l'URL GitHub
+    const match = githubUrl.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+    if (match) {
+      const [, owner, repo] = match;
+      return `https://opengraph.githubassets.com/1/${owner}/${repo}`;
+    }
+    return null;
+  };
+
+  const previewUrl = getGitHubPreviewUrl(project.githubUrl);
+
   return (
-    <div className="group bg-white dark:bg-gray-900 rounded-3xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-800 transform hover:-translate-y-2">
-      <div className="p-7">
+    <div 
+      className="group relative bg-white dark:bg-gray-900 rounded-3xl transition-all duration-300 overflow-visible border border-gray-200 dark:border-gray-800 transform hover:-translate-y-2"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Aperçu du repo au survol */}
+      {isHovered && previewUrl && (
+        <div className="absolute -top-4 left-0 right-0 z-50 transform -translate-y-full mb-2 animate-fade-in">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border-2 border-primary-400 overflow-hidden">
+            <img 
+              src={previewUrl}
+              alt={`Aperçu de ${project.name}`}
+              className="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      )}
+
+      <div className="p-7 relative z-10">
         {/* Project Header */}
         <div className="mb-4">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary-400 transition-colors mb-3">
@@ -54,7 +89,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 px-5 py-2.5 bg-primary-400 text-white text-sm font-bold rounded-full hover:bg-primary-500 hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
+            className="inline-flex items-center space-x-2 px-4 py-2 bg-primary-400 text-white text-sm font-bold rounded-xl border-2 border-primary-400 hover:bg-primary-500 hover:border-primary-500 hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
           >
             <span>Voir</span>
             <ExternalLink className="w-4 h-4" />

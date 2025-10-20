@@ -19,6 +19,7 @@
  *    - stars : Nombre d'étoiles sur GitHub (0 si nouveau projet)
  *    - forks : Nombre de forks sur GitHub (0 si nouveau projet)
  *    - lastUpdate : Dernière mise à jour (format: YYYY-MM-DD)
+ *    - imageUrl (optionnel) : URL personnalisée de l'aperçu (sinon auto-généré depuis GitHub)
  *
  * EXEMPLE D'AJOUT :
  * -----------------

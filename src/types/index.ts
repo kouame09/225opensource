@@ -8,4 +8,5 @@ export interface Project {
   stars: number;
   forks: number;
   lastUpdate: string;
+  imageUrl?: string; // URL de l'aperçu du repo (Open Graph image)
 }

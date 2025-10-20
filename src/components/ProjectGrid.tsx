@@ -87,7 +87,7 @@ const ProjectGrid = ({ projects, loading = false }: ProjectGridProps) => {
   return (
     <div className="space-y-8">
       {/* Grille de projets */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
         {paginatedProjects.map((project: Project) => (
           <ProjectCard key={project.id} project={project} />
         ))}

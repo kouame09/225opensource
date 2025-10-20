@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="py-8 border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          Built with <span className="text-red-500">❤️</span> by{' '}
+          Powered by <span className="text-primary-400 font-bold">225OS</span> ❤️ - Driven by{' '}
           <a
             href="https://github.com/kouame09"
             target="_blank"

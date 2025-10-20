@@ -7,16 +7,16 @@ interface HeroProps {
 
 const Hero = ({ searchQuery, setSearchQuery }: HeroProps) => {
   return (
-    <div className="pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="pt-32 pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:pt-40 sm:pb-20 lg:pt-48 lg:pb-28">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
-          Répertoire de Projets Open Source
-          <span className="block mt-3 text-primary-400">
-            Made in <span className="text-ivory-orange">Côte d'Ivoire</span>
+          La vitrine des projets <br />open-source de
+          <span className="block mt-3 text-ivory-orange">
+            Côte <span className="text-primary-400 ">d'Ivoire</span>
           </span>
         </h2>
         <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-12">
-          Retrouvez les projets open-source de la communauté tech ivoirienne. Explorez, découvrez et contribuez à des projets passionnants.
+          Plateforme collaborative de projets open-source portée par la communauté tech ivoirienne. Explorez, découvrez et contribuez à des projets passionnants.
         </p>
 
         <div className="max-w-2xl mx-auto">

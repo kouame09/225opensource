@@ -5,6 +5,7 @@ import ProjectGrid from './components/ProjectGrid';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
+import Loader from './components/Loader';
 import { Project } from './types';
 import { mockProjects } from './data';
 import CTA from './components/CTA';
@@ -14,6 +15,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTech, setSelectedTech] = useState<string>('');
@@ -34,7 +36,7 @@ function App() {
       if (!welcomeModalClosed) {
         setShowWelcomeModal(true);
       }
-    }, 2000); // Afficher le modal après 2 secondes
+    }, 3500); // Afficher le modal après le loader
 
     return () => clearTimeout(timer);
   }, []);
@@ -96,8 +98,12 @@ function App() {
     return filtered;
   }, [projects, searchQuery, selectedTech, sortBy]);
 
+  if (showLoader) {
+    return <Loader onLoadingComplete={() => setShowLoader(false)} />;
+  }
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 animate-fade-in">
       <Header
         darkMode={darkMode}
         setDarkMode={setDarkMode}
@@ -109,7 +115,7 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-8 sm:pb-12 lg:pb-16">
         <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-3xl p-6 border border-gray-200 dark:border-gray-800">
           <div className="flex flex-col space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
@@ -181,10 +187,10 @@ function App() {
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-24 sm:pb-32 lg:pb-40">
         <ProjectGrid projects={filteredProjects} loading={loading} />
       </main>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-16 sm:pb-24 lg:pb-32">
         <CTA
           variant="hero"
           title="Prêt à contribuer ?"
