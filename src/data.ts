@@ -122,12 +122,12 @@ export const mockProjects: Project[] = [
     lastUpdate: '2025-09-27'
   },
   {
-    id: '7',
-    name: 'HealthTrack CI',
+    id: '8',
+    name: 'Djolio',
     description: 'Système de gestion de dossiers médicaux électroniques',
     techStack: ['React', 'Django', 'Redis'],
     author: 'Dr. Diallo',
-    githubUrl: 'https://github.com/example/healthtrack-ci',
+    githubUrl: 'https://github.com/example/djolio',
     stars: 678,
     forks: 112,
     lastUpdate: '2025-09-27'
