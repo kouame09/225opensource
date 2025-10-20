@@ -66,23 +66,23 @@ export const mockProjects: Project[] = [
     forks: 1,
     lastUpdate: '2025-10-18'
   },
-  {
+    {
     id: '2',
-    name: 'Abidjan Transit',
-    description: 'Application de suivi des transports en commun à Abidjan',
-    techStack: ['React Native', 'Node.js', 'MongoDB'],
-    author: 'Marie K.',
-    githubUrl: 'https://github.com/example/abidjan-transit',
+    name: 'Snake Game',
+    description: 'Jeu snake game dans le ne navigateur.',
+    techStack: ['React', 'TypeScript', 'TailwindCSS'],
+    author: 'Prince K.',
+    githubUrl: 'https://github.com/kouame09/snakeGameClone',
     stars: 189,
     forks: 45,
-    lastUpdate: '2025-09-25'
+    lastUpdate: '2025-10-20'
   },
   {
     id: '3',
     name: 'AgriTech CI',
     description: 'Solution numérique pour les agriculteurs ivoiriens',
     techStack: ['Vue.js', 'Python', 'PostgreSQL'],
-    author: 'Kouassi A.',
+    author: 'Kouassi S.',
     githubUrl: 'https://github.com/example/agritech-ci',
     stars: 567,
     forks: 89,
