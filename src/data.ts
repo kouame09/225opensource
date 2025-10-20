@@ -71,7 +71,7 @@ export const mockProjects: Project[] = [
     name: 'Abidjan Transit',
     description: 'Application de suivi des transports en commun à Abidjan',
     techStack: ['React Native', 'Node.js', 'MongoDB'],
-    author: 'Marie K.',
+    author: 'Marie S.',
     githubUrl: 'https://github.com/example/abidjan-transit',
     stars: 189,
     forks: 45,
