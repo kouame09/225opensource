@@ -75,7 +75,7 @@ export const mockProjects: Project[] = [
     githubUrl: 'https://github.com/kouame09/snakeGameClone',
     stars: 189,
     forks: 45,
-    lastUpdate: '2025-01-25'
+    lastUpdate: '2025-10-20'
   },
   {
     id: '3',
