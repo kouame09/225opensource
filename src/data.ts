@@ -6,7 +6,7 @@ export const mockProjects: Project[] = [
     name: '225 Open Source',
     description: 'Plateforme collaborative de projets open-source portée par la communauté tech ivoirienne.',
     techStack: ['React', 'TypeScript', 'TailwindCSS'],
-    author: 'Prince .',
+    author: 'Prince K.',
     githubUrl: 'https://github.com/kouame09/225opensource',
     stars: 0,
     forks: 1,
