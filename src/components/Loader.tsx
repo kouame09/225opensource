@@ -6,13 +6,17 @@ interface LoaderProps {
 
 const Loader = ({ onLoadingComplete }: LoaderProps) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isSliding, setIsSliding] = useState(false);
   const text = "225OS";
 
   useEffect(() => {
     // Durée totale de l'animation
     const timer = setTimeout(() => {
-      setIsVisible(false);
-      setTimeout(onLoadingComplete, 400); // Attendre la fin de l'animation de sortie
+      setIsSliding(true);
+      setTimeout(() => {
+        setIsVisible(false);
+        setTimeout(onLoadingComplete, 400); // Attendre la fin de l'animation de sortie
+      }, 800); // Durée de l'animation de glissement
     }, 2500);
 
     return () => clearTimeout(timer);
@@ -26,7 +30,7 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
   }
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-all duration-500 ease-in-out">
+    <div className={`fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-all duration-500 ease-in-out ${isSliding ? 'slide-up' : ''}`}>
       {/* Conteneur principal */}
       <div className="relative flex flex-col items-center justify-center space-y-8">
         {/* Logo animé */}
@@ -40,7 +44,7 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
                   isOrangePart ? 'text-[#FF6600]' : 'text-primary-500'
                 }`}
                 style={{
-                  animation: `bounce-in 0.6s ease-out ${index * 0.1}s both, float 3s ease-in-out ${index * 0.2}s infinite`,
+                  animation: `bounce-in 0.6s ease-out ${index * 0.1}s both`,
                 }}
               >
                 {char}
@@ -53,9 +57,6 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
         <div className="text-center space-y-2 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
           <p className="text-xl sm:text-2xl font-bold text-gray-700 tracking-wide">
             Open Source Ivoirien
-          </p>
-          <p className="text-sm sm:text-base text-gray-600 font-medium">
-            Chargement en cours...
           </p>
         </div>
 
@@ -88,18 +89,12 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
           }
         }
 
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px) rotate(0deg);
+        @keyframes slide-up {
+          0% {
+            transform: translateY(0);
           }
-          25% {
-            transform: translateY(-10px) rotate(2deg);
-          }
-          50% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          75% {
-            transform: translateY(-5px) rotate(-2deg);
+          100% {
+            transform: translateY(-100%);
           }
         }
 
@@ -125,6 +120,10 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
 
         .animate-fade-in-up {
           animation: fade-in-up 0.8s ease-out both;
+        }
+
+        .slide-up {
+          animation: slide-up 0.8s ease-in-out forwards;
         }
 
         .delay-300 {
