@@ -77,5 +77,16 @@ export const mockProjects: Project[] = [
     forks: 45,
     lastUpdate: '2025-10-20'
   },
+  {
+    id: '3',
+    name: 'Envoi/reception Mail',
+    description: 'Serveur Node.js léger permettant de recevoir des messages depuis un formulaire de contact et de les envoyer par e-mail via Nodemailer.',
+    techStack: ['NodeJS', 'JavaScript', 'TailwindCSS'],
+    author: 'Konan Kouadio Aymard',
+    githubUrl: 'https://github.com/aymardknn/Envoi-de-mail',
+    stars: 100,
+    forks: 50,
+    lastUpdate: '2025-10-25'
+  },
   
 ];
