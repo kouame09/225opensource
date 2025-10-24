@@ -7,7 +7,6 @@ const FeatureSection = () => {
         {/* Left side - Text content */}
         <div className="space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full">
-            <Sparkles className="w-4 h-4 text-primary-400" />
             <span className="text-sm font-semibold text-primary-600 dark:text-primary-400">
               L'Open Source Ivoirien
             </span>
