@@ -7,7 +7,7 @@ interface HeroProps {
 
 const Hero = ({ searchQuery, setSearchQuery }: HeroProps) => {
   return (
-    <div className="pt-32 pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:pt-40 sm:pb-20 lg:pt-48 lg:pb-28">
+    <div className="pt-24 pb-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
           La vitrine des projets <br />open-source de

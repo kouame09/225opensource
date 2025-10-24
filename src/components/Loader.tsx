@@ -6,102 +6,80 @@ interface LoaderProps {
 
 const Loader = ({ onLoadingComplete }: LoaderProps) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [isSliding, setIsSliding] = useState(false);
-  const text = "225OS";
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    // Durée totale de l'animation
     const timer = setTimeout(() => {
-      setIsSliding(true);
+      setIsFading(true);
       setTimeout(() => {
         setIsVisible(false);
-        setTimeout(onLoadingComplete, 400); // Attendre la fin de l'animation de sortie
-      }, 800); // Durée de l'animation de glissement
+        onLoadingComplete();
+      }, 600);
     }, 2500);
 
     return () => clearTimeout(timer);
   }, [onLoadingComplete]);
 
-  if (!isVisible) {
-    return (
-      <div className="fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-all duration-500 ease-in-out opacity-0 scale-98 pointer-events-none">
-      </div>
-    );
-  }
+  if (!isVisible) return null;
 
   return (
-    <div className={`fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-all duration-500 ease-in-out ${isSliding ? 'slide-up' : ''}`}>
-      {/* Conteneur principal */}
-      <div className="relative flex flex-col items-center justify-center space-y-8">
-        {/* Logo animé */}
-        <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-          {text.split('').map((char, index) => {
-            const isOrangePart = index < 3; 
-            return (
-              <span
-                key={index}
-                className={`text-6xl sm:text-8xl md:text-9xl font-black ${
-                  isOrangePart ? 'text-[#FF6600]' : 'text-primary-500'
-                }`}
-                style={{
-                  animation: `bounce-in 0.6s ease-out ${index * 0.1}s both`,
-                }}
-              >
-                {char}
-              </span>
-            );
-          })}
+    <div 
+      className={`fixed inset-0 z-[9999] bg-gradient-to-br from-white via-primary-50 to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 flex items-center justify-center transition-all duration-600 ${
+        isFading ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+      }`}
+    >
+      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      
+      <div className="relative flex flex-col items-center justify-center">
+        {/* Logo container with glow */}
+        <div className="relative mb-8">
+          {/* Glow effect */}
+          <div className="absolute inset-0 blur-3xl opacity-30 animate-pulse">
+            <div className="w-32 h-32 bg-primary-400 rounded-full"></div>
+          </div>
+          
+          {/* Logo */}
+          <div className="relative">
+            <img
+              src="/logo.png"
+              alt="225 OpenSource"
+              className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl shadow-2xl animate-float"
+            />
+          </div>
         </div>
 
-        {/* Texte descriptif */}
-        <div className="text-center space-y-2 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-          <p className="text-xl sm:text-2xl font-bold text-gray-700 tracking-wide">
-            Open Source Ivoirien
+        {/* Text animation */}
+        <div className="text-center space-y-3">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white animate-fade-in">
+            225 <span className="text-primary-400">OpenSource</span>
+          </h1>
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 animate-fade-in-delay">
+            Chargement en cours...
           </p>
         </div>
 
-        {/* Barre de progression */}
-        <div className="w-64 sm:w-80 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-primary-500 to-green-500 rounded-full shadow-lg shadow-primary-500/50"
-            style={{
-              animation: 'progress 2.5s ease-in-out forwards'
-            }}
-          ></div>
+        {/* Minimal spinner */}
+        <div className="mt-8 flex gap-2">
+          <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+          <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+          <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
         </div>
       </div>
 
       <style>{`
-        @keyframes bounce-in {
-          0% {
-            opacity: 0;
-            transform: scale(0.3) translateY(-100px);
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
           }
           50% {
-            transform: scale(1.05) translateY(0);
-          }
-          70% {
-            transform: scale(0.95);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1);
+            transform: translateY(-10px);
           }
         }
 
-        @keyframes slide-up {
-          0% {
-            transform: translateY(0);
-          }
-          100% {
-            transform: translateY(-100%);
-          }
-        }
-
-        @keyframes fade-in-up {
+        @keyframes fade-in {
           0% {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(10px);
           }
           100% {
             opacity: 1;
@@ -109,29 +87,23 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
           }
         }
 
-        @keyframes progress {
-          0% {
-            width: 0%;
-          }
-          100% {
-            width: 100%;
-          }
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
         }
 
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out both;
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out 0.3s both;
         }
 
-        .slide-up {
-          animation: slide-up 0.8s ease-in-out forwards;
+        .animate-fade-in-delay {
+          animation: fade-in 0.8s ease-out 0.6s both;
         }
 
-        .delay-300 {
-          animation-delay: 0.3s;
-        }
-
-        .delay-700 {
-          animation-delay: 0.7s;
+        .bg-grid-pattern {
+          background-image: 
+            linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+          background-size: 40px 40px;
         }
       `}</style>
     </div>
