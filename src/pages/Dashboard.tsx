@@ -84,10 +84,10 @@ const Dashboard = () => {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                My Dashboard
+                Mon Dashboard
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
-                Welcome back, {user?.displayName || user?.email}!
+                Bienvenue, {user?.displayName || user?.email}!
               </p>
             </div>
             <button
@@ -95,7 +95,7 @@ const Dashboard = () => {
               className="flex items-center gap-2 bg-primary-400 hover:bg-primary-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors shadow-lg hover:shadow-xl"
             >
               <Plus className="w-5 h-5" />
-              New Project
+              Nouveau projet
             </button>
           </div>
         </div>
@@ -105,7 +105,7 @@ const Dashboard = () => {
           <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-800">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Projects</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Projets</p>
                 <p className="text-3xl font-bold text-gray-900 dark:text-white">{projects.length}</p>
               </div>
               <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center">
@@ -146,27 +146,27 @@ const Dashboard = () => {
         </div>
 
         {/* Projects List */}
-        <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-3xl p-6 border border-gray-200 dark:border-gray-800">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Your Projects</h2>
+        <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-3xl p-6 sm:p-8 lg:p-10 border border-gray-200 dark:border-gray-800 shadow-xl">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Vos Projets</h2>
           
           {loading ? (
             <div className="text-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-400 mx-auto"></div>
-              <p className="text-gray-600 dark:text-gray-400 mt-4">Loading projects...</p>
+              <p className="text-gray-600 dark:text-gray-400 mt-4">Chargement des projets...</p>
             </div>
           ) : projects.length === 0 ? (
             <div className="text-center py-12">
               <div className="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Plus className="w-12 h-12 text-gray-400" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">No projects yet</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6">Create your first project to get started!</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Aucun projet pour le moment</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-6">Créez votre premier projet pour commencer !</p>
               <button
                 onClick={() => setShowForm(true)}
                 className="inline-flex items-center gap-2 bg-primary-400 hover:bg-primary-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
               >
                 <Plus className="w-5 h-5" />
-                Create Project
+                Créer un projet
               </button>
             </div>
           ) : (
@@ -231,14 +231,14 @@ const Dashboard = () => {
                       className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-lg transition-colors"
                     >
                       <Edit className="w-4 h-4" />
-                      Edit
+                      Modifier
                     </button>
                     <button
                       onClick={() => handleDeleteProject(project.id)}
                       className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
-                      Delete
+                      Supprimer
                     </button>
                   </div>
                 </div>
