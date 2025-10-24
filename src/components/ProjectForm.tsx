@@ -17,7 +17,6 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
     githubUrl: '',
     stars: 0,
     forks: 0,
-    lastUpdate: new Date().toISOString().split('T')[0],
     techStack: [] as string[],
   });
 
@@ -33,7 +32,6 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
         githubUrl: project.githubUrl,
         stars: project.stars,
         forks: project.forks,
-        lastUpdate: project.lastUpdate,
         techStack: project.techStack || [],
       });
     }
@@ -69,7 +67,12 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
     setLoading(true);
     
     try {
-      await onSubmit(formData);
+      // Add automatic lastUpdate date
+      const projectData = {
+        ...formData,
+        lastUpdate: new Date().toISOString().split('T')[0],
+      };
+      await onSubmit(projectData);
     } catch (error) {
       console.error('Error submitting form:', error);
     } finally {
@@ -82,7 +85,7 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
       <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full my-8 border border-gray-200 dark:border-gray-800">
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            {isEditing ? 'Edit Project' : 'Add New Project'}
+            {isEditing ? 'Modifier le projet' : 'Ajouter un nouveau projet'}
           </h2>
           <button
             onClick={onCancel}
@@ -96,30 +99,30 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Project Name *
+                Nom du projet *
               </label>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                placeholder="My Awesome Project"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-1 focus:ring-primary-400 focus:border-primary-400 focus:outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                placeholder="Mon super projet"
                 required
               />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Author *
+                Auteur *
               </label>
               <input
                 type="text"
                 name="author"
                 value={formData.author}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                placeholder="John Doe"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-1 focus:ring-primary-400 focus:border-primary-400 focus:outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                placeholder="Prince Kouamé"
                 required
               />
             </div>
@@ -134,8 +137,8 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
               value={formData.description}
               onChange={handleChange}
               rows={4}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none"
-              placeholder="Brief description of your project..."
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-1 focus:ring-primary-400 focus:border-primary-400 focus:outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none"
+              placeholder="Brève description de votre projet..."
               required
             />
           </div>
@@ -149,13 +152,13 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
               name="githubUrl"
               value={formData.githubUrl}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-1 focus:ring-primary-400 focus:border-primary-400 focus:outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
               placeholder="https://github.com/username/repo"
               required
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Stars
@@ -166,7 +169,7 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
                 value={formData.stars}
                 onChange={handleChange}
                 min="0"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-1 focus:ring-primary-400 focus:border-primary-400 focus:outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
               />
             </div>
 
@@ -180,20 +183,7 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
                 value={formData.forks}
                 onChange={handleChange}
                 min="0"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Last Update
-              </label>
-              <input
-                type="date"
-                name="lastUpdate"
-                value={formData.lastUpdate}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-1 focus:ring-primary-400 focus:border-primary-400 focus:outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
               />
             </div>
           </div>
@@ -208,8 +198,8 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
                 value={newTech}
                 onChange={(e) => setNewTech(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTech())}
-                className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                placeholder="Add a technology"
+                className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-1 focus:ring-primary-400 focus:border-primary-400 focus:outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                placeholder="Ajouter une technologie"
               />
               <button
                 type="button"
@@ -217,7 +207,7 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
                 className="px-4 py-3 bg-primary-400 hover:bg-primary-500 text-white rounded-lg transition-colors flex items-center gap-2"
               >
                 <Plus className="w-5 h-5" />
-                Add
+                Ajouter
               </button>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -245,14 +235,14 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
               disabled={loading}
               className="flex-1 bg-primary-400 hover:bg-primary-500 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Saving...' : isEditing ? 'Update Project' : 'Create Project'}
+              {loading ? 'Enregistrement...' : isEditing ? 'Modifier le projet' : 'Créer le projet'}
             </button>
             <button
               type="button"
               onClick={onCancel}
               className="flex-1 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-3 rounded-lg transition-colors"
             >
-              Cancel
+              Annuler
             </button>
           </div>
         </form>

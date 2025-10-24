@@ -53,9 +53,6 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white animate-fade-in">
             225 <span className="text-primary-400">OpenSource</span>
           </h1>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 animate-fade-in-delay">
-            Chargement en cours...
-          </p>
         </div>
 
         {/* Minimal spinner */}
