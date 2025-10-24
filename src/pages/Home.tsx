@@ -12,6 +12,7 @@ import { getAllProjects } from '../services/projectService';
 import CTA from '../components/CTA';
 import Contributors from '../components/Contributors';
 import BuyMeCoffee from '../components/BuyMeCoffee';
+import FeatureSection from '../components/FeatureSection';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -201,6 +202,8 @@ const Home = () => {
           secondaryButtonAction={handleCreateAccount}
         />
       </div>
+
+      <FeatureSection />
 
       <BuyMeCoffee />
 
