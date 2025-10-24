@@ -1,0 +1,60 @@
+import { useState } from 'react';
+import Login from './Login';
+import Register from './Register';
+
+const AuthPage = () => {
+  const [isLogin, setIsLogin] = useState(true);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 flex items-center justify-center px-4 py-12">
+      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      
+      <div className="relative z-10 w-full max-w-6xl flex flex-col lg:flex-row items-center gap-12">
+        {/* Left side - Branding */}
+        <div className="flex-1 text-center lg:text-left">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            225 <span className="text-primary-400">OpenSource</span>
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
+            Discover, share and manage open-source projects from Côte d'Ivoire's vibrant tech community.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+            <div className="flex items-center gap-2">
+              <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">Share Projects</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Showcase your work</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">Connect</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Join the community</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right side - Auth form */}
+        <div className="flex-1 flex justify-center lg:justify-end w-full">
+          {isLogin ? (
+            <Login onToggleMode={() => setIsLogin(false)} />
+          ) : (
+            <Register onToggleMode={() => setIsLogin(true)} />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AuthPage;
