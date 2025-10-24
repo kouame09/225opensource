@@ -41,130 +41,7 @@ const contributors = [
     role: 'Frontend Developer',
     avatar: 'https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&w=400',
     contributions: 178
-  },
-  {
-    id: 7,
-    name: 'Sophie Smith',
-    role: 'Data Scientist',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 123
-  },
-  {
-    id: 8,
-    name: 'Olivia Brown',
-    role: 'Product Manager',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 98
-  },
-  {
-    id: 9,
-    name: 'Liam Taylor',
-    role: 'QA Engineer',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 76
-  },
-  {
-    id: 10,
-    name: 'Emma Green',
-    role: 'Marketing Specialist',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 54
-  },
-  {
-    id: 11,
-    name: 'Noah White',
-    role: 'Business Analyst',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 32
-  },
-  {
-    id: 12,
-    name: 'William Black',
-    role: 'UI/UX Designer',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 21
-  },
-  {
-    id: 13,
-    name: 'Mia Martin',
-    role: 'Data Analyst',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 19
-  },
-  {
-    id: 14,
-    name: 'Aiden Harris',
-    role: 'Full Stack Developer',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 17
-  },
-  {
-    id: 15,
-    name: 'Sophie Brown',
-    role: 'Product Owner',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 15
-  },
-  {
-    id: 16,
-    name: 'Ethan White',
-    role: 'Backend Engineer',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 14
-  },
-  {
-    id: 17,
-    name: 'Mia Harris',
-    role: 'Frontend Developer',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 13
-  },
-  {
-    id: 18,
-    name: 'Olivia Green',
-    role: 'DevOps Engineer',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 12
-  },
-  {
-    id: 19,
-    name: 'Noah Green',
-    role: 'QA Engineer',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 11
-  },
-  {
-    id: 20,
-    name: 'Lucas Brown',
-    role: 'Marketing Specialist',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 10
-  },
-  {
-    id: 21,
-    name: 'Mason White',
-    role: 'Business Analyst',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 9
-  },
-  {
-    id: 22,
-    name: 'Ethan Black',
-    role: 'Data Scientist',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 8
-  },
-  {
-    id: 23,
-    name: 'Aiden Martin',
-    role: 'Product Owner',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    contributions: 7
-  },
-  
-
-
-  
+  }
 ];
 
 function Contributors() {
@@ -172,8 +49,8 @@ function Contributors() {
     <div className="py-16 mb-24 bg-white dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Nos contributeurs</h1>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-4">Nos contributeurs</h1>
+          <p className="text-sm sm:text-base text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
             Merci aux talents qui font vivre la communauté tech ivoirienne
           </p>
         </div>
