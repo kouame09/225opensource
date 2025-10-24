@@ -47,10 +47,10 @@ const Login = ({ onToggleMode }: LoginProps) => {
     <div className="w-full max-w-md">
       <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-800">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          Welcome Back
+          Bon retour
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-8">
-          Sign in to manage your projects
+          Connectez-vous pour gérer vos projets
         </p>
 
         {error && (
@@ -71,7 +71,7 @@ const Login = ({ onToggleMode }: LoginProps) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                placeholder="your@email.com"
+                placeholder="exemple@email.com"
                 required
               />
             </div>
@@ -79,7 +79,7 @@ const Login = ({ onToggleMode }: LoginProps) => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Password
+              Mot de passe
             </label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -99,13 +99,13 @@ const Login = ({ onToggleMode }: LoginProps) => {
             disabled={loading}
             className="w-full bg-primary-400 hover:bg-primary-500 text-white font-semibold py-3 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? 'Connexion...' : 'Se connecter'}
           </button>
         </form>
 
         <div className="my-6 flex items-center">
           <div className="flex-1 border-t border-gray-300 dark:border-gray-700"></div>
-          <span className="px-4 text-sm text-gray-500 dark:text-gray-400">or</span>
+          <span className="px-4 text-sm text-gray-500 dark:text-gray-400">ou</span>
           <div className="flex-1 border-t border-gray-300 dark:border-gray-700"></div>
         </div>
 
@@ -115,16 +115,16 @@ const Login = ({ onToggleMode }: LoginProps) => {
           className="w-full bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white font-semibold py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Chrome className="w-5 h-5" />
-          Continue with Google
+          Continuer avec Google
         </button>
 
         <p className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
-          Don't have an account?{' '}
+          Pas encore de compte ?{' '}
           <button
             onClick={onToggleMode}
             className="text-primary-400 hover:text-primary-500 font-semibold"
           >
-            Sign up
+            S'inscrire
           </button>
         </p>
       </div>

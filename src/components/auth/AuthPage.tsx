@@ -16,7 +16,7 @@ const AuthPage = () => {
             225 <span className="text-primary-400">OpenSource</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
-            Discover, share and manage open-source projects from Côte d'Ivoire's vibrant tech community.
+            Découvrez, partagez et gérez des projets open-source de la vibrante communauté tech ivoirienne.
           </p>
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
             <div className="flex items-center gap-2">
@@ -26,8 +26,8 @@ const AuthPage = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-semibold text-gray-900 dark:text-white">Share Projects</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">Showcase your work</p>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">Partager des projets</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Montrez votre travail</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -37,8 +37,8 @@ const AuthPage = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-semibold text-gray-900 dark:text-white">Connect</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">Join the community</p>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">Se connecter</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Rejoignez la communauté</p>
               </div>
             </div>
           </div>

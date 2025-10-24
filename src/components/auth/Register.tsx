@@ -21,12 +21,12 @@ const Register = ({ onToggleMode }: RegisterProps) => {
     setError('');
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError('Les mots de passe ne correspondent pas');
       return;
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError('Le mot de passe doit contenir au moins 6 caractères');
       return;
     }
 
@@ -60,10 +60,10 @@ const Register = ({ onToggleMode }: RegisterProps) => {
     <div className="w-full max-w-md">
       <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-800">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          Create Account
+          Créer un compte
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-8">
-          Join us to share your projects
+          Rejoignez-nous pour partager vos projets
         </p>
 
         {error && (
@@ -75,7 +75,7 @@ const Register = ({ onToggleMode }: RegisterProps) => {
         <form onSubmit={handleRegister} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Display Name
+              Nom d'affichage
             </label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -84,7 +84,7 @@ const Register = ({ onToggleMode }: RegisterProps) => {
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                placeholder="Your Name"
+                placeholder="Votre nom"
                 required
               />
             </div>
@@ -101,7 +101,7 @@ const Register = ({ onToggleMode }: RegisterProps) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                placeholder="your@email.com"
+                placeholder="Exemple@email.com"
                 required
               />
             </div>
@@ -109,7 +109,7 @@ const Register = ({ onToggleMode }: RegisterProps) => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Password
+              Mot de passe
             </label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -127,7 +127,7 @@ const Register = ({ onToggleMode }: RegisterProps) => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Confirm Password
+              Confirmer le mot de passe
             </label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -147,13 +147,13 @@ const Register = ({ onToggleMode }: RegisterProps) => {
             disabled={loading}
             className="w-full bg-primary-400 hover:bg-primary-500 text-white font-semibold py-3 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Creating account...' : 'Create Account'}
+            {loading ? 'Création du compte...' : 'Créer un compte'}
           </button>
         </form>
 
         <div className="my-6 flex items-center">
           <div className="flex-1 border-t border-gray-300 dark:border-gray-700"></div>
-          <span className="px-4 text-sm text-gray-500 dark:text-gray-400">or</span>
+          <span className="px-4 text-sm text-gray-500 dark:text-gray-400">ou</span>
           <div className="flex-1 border-t border-gray-300 dark:border-gray-700"></div>
         </div>
 
@@ -163,16 +163,16 @@ const Register = ({ onToggleMode }: RegisterProps) => {
           className="w-full bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white font-semibold py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Chrome className="w-5 h-5" />
-          Continue with Google
+          Continuer avec Google
         </button>
 
         <p className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
-          Already have an account?{' '}
+          Déjà un compte ?{' '}
           <button
             onClick={onToggleMode}
             className="text-primary-400 hover:text-primary-500 font-semibold"
           >
-            Sign in
+            Se connecter
           </button>
         </p>
       </div>
