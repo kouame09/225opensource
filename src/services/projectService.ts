@@ -8,7 +8,6 @@ import {
   getDoc,
   query,
   where,
-  orderBy,
   serverTimestamp,
   Timestamp,
 } from 'firebase/firestore';
@@ -18,7 +17,7 @@ import { Project } from '../types';
 const PROJECTS_COLLECTION = 'projects';
 
 // Convert Firestore timestamp to ISO string
-const timestampToString = (timestamp: any): string => {
+const timestampToString = (timestamp: Timestamp | undefined): string => {
   if (timestamp instanceof Timestamp) {
     return timestamp.toDate().toISOString();
   }
@@ -45,9 +44,9 @@ export const createProject = async (projectData: Omit<Project, 'id'>, userId: st
       updatedAt: new Date().toISOString(),
       error: null 
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error creating project:', error);
-    return { id: null, error: error.message };
+    return { id: null, error: error instanceof Error ? error.message : 'Unknown error' };
   }
 };
 
@@ -56,8 +55,7 @@ export const getUserProjects = async (userId: string): Promise<Project[]> => {
   try {
     const q = query(
       collection(db, PROJECTS_COLLECTION),
-      where('userId', '==', userId),
-      orderBy('updatedAt', 'desc')
+      where('userId', '==', userId)
     );
 
     const querySnapshot = await getDocs(q);
@@ -82,8 +80,15 @@ export const getUserProjects = async (userId: string): Promise<Project[]> => {
       });
     });
 
+    // Sort by updatedAt in JavaScript instead of Firestore
+    projects.sort((a, b) => {
+      const dateA = new Date(a.updatedAt || 0).getTime();
+      const dateB = new Date(b.updatedAt || 0).getTime();
+      return dateB - dateA;
+    });
+
     return projects;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching user projects:', error);
     return [];
   }
@@ -92,12 +97,7 @@ export const getUserProjects = async (userId: string): Promise<Project[]> => {
 // Get all public projects (for home page)
 export const getAllProjects = async (): Promise<Project[]> => {
   try {
-    const q = query(
-      collection(db, PROJECTS_COLLECTION),
-      orderBy('updatedAt', 'desc')
-    );
-
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(collection(db, PROJECTS_COLLECTION));
     const projects: Project[] = [];
 
     querySnapshot.forEach((doc) => {
@@ -119,8 +119,15 @@ export const getAllProjects = async (): Promise<Project[]> => {
       });
     });
 
+    // Sort by updatedAt in JavaScript
+    projects.sort((a, b) => {
+      const dateA = new Date(a.updatedAt || 0).getTime();
+      const dateB = new Date(b.updatedAt || 0).getTime();
+      return dateB - dateA;
+    });
+
     return projects;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching all projects:', error);
     return [];
   }
@@ -152,7 +159,7 @@ export const getProjectById = async (projectId: string): Promise<Project | null>
     }
     
     return null;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching project:', error);
     return null;
   }
@@ -176,9 +183,9 @@ export const updateProject = async (projectId: string, projectData: Partial<Proj
     await updateDoc(docRef, updateData);
     
     return { success: true, error: null };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error updating project:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
   }
 };
 
@@ -189,9 +196,9 @@ export const deleteProject = async (projectId: string) => {
     await deleteDoc(docRef);
     
     return { success: true, error: null };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error deleting project:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
   }
 };
 

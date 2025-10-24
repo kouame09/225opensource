@@ -11,6 +11,7 @@ import { Project } from '../types';
 import { getAllProjects } from '../services/projectService';
 import CTA from '../components/CTA';
 import Contributors from '../components/Contributors';
+import BuyMeCoffee from '../components/BuyMeCoffee';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -55,8 +56,8 @@ const Home = () => {
     window.open('https://github.com/kouame09/225opensource', '_blank');
   };
 
-  const handleAddProject = () => {
-    window.open('https://github.com/kouame09/225opensource/blob/main/src/data.ts', '_blank');
+  const handleCreateAccount = () => {
+    navigate('/auth');
   };
 
   const allTechnologies = useMemo(() => {
@@ -196,10 +197,12 @@ const Home = () => {
           Rejoignez-nous pour enrichir l'écosystème open-source ivoirien."
           primaryButtonText="Contribuer au projet"
           primaryButtonAction={handleContribution}
-          secondaryButtonText="Ajouter votre projet"
-          secondaryButtonAction={handleAddProject}
+          secondaryButtonText="Créer un compte"
+          secondaryButtonAction={handleCreateAccount}
         />
       </div>
+
+      <BuyMeCoffee />
 
       <Contributors />
 
