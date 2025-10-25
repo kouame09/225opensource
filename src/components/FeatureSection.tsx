@@ -1,4 +1,4 @@
-import { Code2, Rocket, Heart, Sparkles } from 'lucide-react';
+import { Code2, Rocket, Heart } from "lucide-react";
 
 const FeatureSection = () => {
   return (
@@ -17,8 +17,11 @@ const FeatureSection = () => {
           </h2>
 
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            225 OpenSource est plus qu'une plateforme : c'est un mouvement qui rassemble les développeurs, 
-            designers et passionnés de technologie pour créer, partager et innover ensemble.
+            225 OpenSource n’est pas qu’une plateforme : c’est un mouvement. Un
+            mouvement qui rassemble tous les professionnels de la tech
+            ivoirienne — génie logiciel, data science, cybersécurité, réseaux
+            informatiques, et bien plus encore pour créer, partager et innover
+            ensemble.
           </p>
 
           <div className="space-y-4 pt-4">
@@ -31,7 +34,8 @@ const FeatureSection = () => {
                   Code de qualité
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Des projets soigneusement documentés et maintenus par la communauté
+                  Des projets soigneusement documentés et maintenus par la
+                  communauté
                 </p>
               </div>
             </div>
@@ -70,7 +74,7 @@ const FeatureSection = () => {
         <div className="relative">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary-100 to-blue-100 dark:from-primary-900/20 dark:to-blue-900/20 rounded-3xl transform rotate-3"></div>
-          
+
           {/* Main illustration container */}
           <div className="relative bg-white dark:bg-gray-900 rounded-3xl p-8 sm:p-12 border border-gray-200 dark:border-gray-800 shadow-xl">
             <div className="space-y-6">
@@ -91,11 +95,15 @@ const FeatureSection = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-gradient-to-br from-primary-50 to-blue-50 dark:from-primary-900/20 dark:to-blue-900/20 rounded-xl p-4 border border-primary-200/50 dark:border-primary-800/50">
                   <div className="text-2xl font-bold text-primary-400">50+</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Projets actifs</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">
+                    Projets actifs
+                  </div>
                 </div>
                 <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-4 border border-purple-200/50 dark:border-purple-800/50">
                   <div className="text-2xl font-bold text-purple-400">30+</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Développeurs</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">
+                    Développeurs
+                  </div>
                 </div>
               </div>
 
