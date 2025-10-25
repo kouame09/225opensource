@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ExternalLink, Star, GitFork } from 'lucide-react';
 import { Project } from '../types';
+import ProjectDetailModal from './ProjectDetailModal';
 
 interface ProjectCardProps {
   project: Project;
@@ -8,12 +9,13 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Générer l'URL de l'image Open Graph du repo GitHub
   const getGitHubPreviewUrl = (githubUrl: string) => {
     if (project.imageUrl) return project.imageUrl;
     // Extraire le owner et repo depuis l'URL GitHub
-    const match = githubUrl.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+    const match = githubUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
     if (match) {
       const [, owner, repo] = match;
       return `https://opengraph.githubassets.com/1/${owner}/${repo}`;
@@ -24,11 +26,13 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   const previewUrl = getGitHubPreviewUrl(project.githubUrl);
 
   return (
-    <div 
-      className="group relative bg-white dark:bg-gray-900 rounded-3xl transition-all duration-300 overflow-visible border border-gray-200 dark:border-gray-800 transform hover:-translate-y-2"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <>
+      <div 
+        className="group relative bg-white dark:bg-gray-900 rounded-3xl transition-all duration-300 overflow-visible border border-gray-200 dark:border-gray-800 transform hover:-translate-y-2 cursor-pointer"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={() => setIsModalOpen(true)}
+      >
       {/* Aperçu du repo au survol */}
       {isHovered && previewUrl && (
         <div className="absolute -top-4 left-0 right-0 z-50 transform -translate-y-full mb-2 animate-fade-in">
@@ -85,18 +89,26 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             Par <span className="font-semibold text-gray-700 dark:text-gray-300">{project.author}</span>
           </span>
 
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsModalOpen(true);
+            }}
             className="inline-flex items-center space-x-2 px-4 py-2 bg-primary-400 text-white text-sm font-bold rounded-xl border-2 border-primary-400 hover:bg-primary-500 hover:border-primary-500 hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
           >
-            <span>Voir</span>
+            <span>Details</span>
             <ExternalLink className="w-4 h-4" />
-          </a>
+          </button>
         </div>
       </div>
-    </div>
+      </div>
+
+      <ProjectDetailModal
+        project={project}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 };
 
