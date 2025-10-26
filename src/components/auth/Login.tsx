@@ -45,7 +45,7 @@ const Login = ({ onToggleMode }: LoginProps) => {
 
   return (
     <div className="w-full max-w-md">
-      <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-800">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Bon retour
         </h2>
