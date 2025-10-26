@@ -204,10 +204,11 @@ const ProjectForm = ({ project, onSubmit, onCancel, isEditing = false }: Project
               <button
                 type="button"
                 onClick={handleAddTech}
-                className="px-4 py-3 bg-primary-400 hover:bg-primary-500 text-white rounded-lg transition-colors flex items-center gap-2"
+                className="px-3 sm:px-4 py-3 bg-primary-400 hover:bg-primary-500 text-white rounded-lg transition-colors flex items-center gap-2 flex-shrink-0"
+                title="Ajouter"
               >
                 <Plus className="w-5 h-5" />
-                Ajouter
+                <span className="hidden sm:inline">Ajouter</span>
               </button>
             </div>
             <div className="flex flex-wrap gap-2">
