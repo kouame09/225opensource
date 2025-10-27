@@ -105,7 +105,7 @@ Follow the detailed instructions in `FIRESTORE_SECURITY_RULES.md`:
 
 #### Authentication Flow:
 1. Users land on the home page (public)
-2. Click "Sign In" to go to `/auth`
+2. Click "Se connecter" to go to `/auth`
 3. Choose between:
    - Email/Password registration
    - Email/Password login
@@ -114,7 +114,7 @@ Follow the detailed instructions in `FIRESTORE_SECURITY_RULES.md`:
 5. Clicking the logo returns to home page
 
 #### Header Behavior:
-- **Not authenticated**: Shows "Contribuer" and "Sign In" buttons
+- **Not authenticated**: Shows "Contribuer" and "Se connecter" buttons
 - **Authenticated**: Shows username, "Dashboard" button (if not on dashboard), and "Logout" button
 
 ### Dashboard Features

@@ -73,7 +73,7 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
                     onClick={() => navigate('/auth')}
                     className="inline-flex items-center space-x-2 px-4 py-2 bg-green-500 text-white text-sm font-bold rounded-xl border-2 border-green-500 hover:bg-green-600 hover:border-green-600 hover:shadow-lg hover:shadow-green-400/50 transform hover:scale-105 transition-all duration-200"
                   >
-                    <span>Sign In</span>
+                    <span>Se connecter</span>
                   </button>
                 )}
               </>
