@@ -48,7 +48,7 @@ function Contributors() {
   return (
     <div className="py-16 mb-24 bg-white dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
+        <div className="text-center mb-4">
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-4">Nos contributeurs</h1>
           <p className="text-sm sm:text-base text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
             Merci aux talents qui font vivre la communauté tech ivoirienne

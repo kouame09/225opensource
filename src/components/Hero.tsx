@@ -1,11 +1,4 @@
-import { Search, X } from 'lucide-react';
-
-interface HeroProps {
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-}
-
-const Hero = ({ searchQuery, setSearchQuery }: HeroProps) => {
+const Hero = () => {
   return (
     <div className="pt-24 pb-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16">
       <div className="max-w-7xl mx-auto text-center">
@@ -15,30 +8,9 @@ const Hero = ({ searchQuery, setSearchQuery }: HeroProps) => {
             Côte <span className="text-primary-400 ">d'Ivoire</span>
           </span>
         </h2>
-        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-12">
+        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
           Plateforme collaborative de projets open-source portée par la communauté tech ivoirienne. Explorez, découvrez et contribuez à des projets passionnants.
         </p>
-
-        <div className="max-w-2xl mx-auto">
-          <div className="relative">
-            <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Rechercher un projet, auteur ou description..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-14 pr-12 py-4 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-800 rounded-full text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-primary-400 transition-colors duration-200 text-base font-medium"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            )}
-          </div>
-        </div>
       </div>
     </div>
   );

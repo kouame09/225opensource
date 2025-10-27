@@ -7,6 +7,8 @@ import ProjectCard from '../components/ProjectCard';
 import Hero from '../components/Hero';
 import Footer from '../components/Footer';
 import Loader from '../components/Loader';
+import GreenBanner from '../components/GreenBanner';
+import InspirationSection from '../components/InspirationSection';
 import { Project } from '../types';
 import { getAllProjects } from '../services/projectService';
 import CTA from '../components/CTA';
@@ -21,7 +23,6 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [showLoader, setShowLoader] = useState(true);
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -69,7 +70,7 @@ const Home = () => {
     return (
       <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
         <div className="opacity-0 pointer-events-none">
-          <Hero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <Hero />
         </div>
         <Loader onLoadingComplete={() => setShowLoader(false)} />
       </div>
@@ -78,10 +79,13 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 animate-fade-in pt-20">
-      <Hero
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
+      <Hero />
+
+      {/* Section Bannière verte */}
+      <GreenBanner />
+
+      {/* Section Inspiration avec texte, chiffres et citation */}
+      <InspirationSection projects={projects} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-12 sm:pb-16 lg:pb-20">
         {loading ? (
@@ -110,6 +114,8 @@ const Home = () => {
         )}
       </main>
 
+      <FeatureSection />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-16 sm:pb-24 lg:pb-32">
         <CTA
           variant="hero"
@@ -123,11 +129,9 @@ const Home = () => {
         />
       </div>
 
-      <FeatureSection />
+      <Contributors />
 
       <BuyMeCoffee />
-
-      <Contributors />
 
       <Footer />
 
