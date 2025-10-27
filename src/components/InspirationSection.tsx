@@ -115,8 +115,20 @@ const InspirationSection = ({ projects }: InspirationSectionProps) => {
           <div className="absolute -inset-4 bg-gradient-to-br from-primary-100 to-purple-100 dark:from-primary-900/20 dark:to-purple-900/20 rounded-3xl opacity-50 blur-2xl" />
           
           {/* Carte de citation */}
-          <div className="relative bg-green-20 dark:bg-gray-900/10 rounded-2xl p-8 sm:p-10 border-2 border-gray-200 dark:border-gray-800 shadow-sm">
-            <Quote className="w-12 h-12 text-primary-400 mb-6 opacity-50" />
+          <div className="relative bg-green-20 dark:bg-gray-900/10 rounded-2xl p-8 sm:p-10 border-2 border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+            {/* Motif de lignes diagonales */}
+            <div className="absolute top-0 left-0 right-0 h-24 opacity-10">
+              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="diagonalLines" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="20" x2="20" y2="0" stroke="currentColor" strokeWidth="2" className="text-primary-400" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#diagonalLines)" />
+              </svg>
+            </div>
+            
+            <Quote className="w-12 h-12 text-primary-400 mb-6 opacity-50 relative z-10" />
             
             <blockquote className="space-y-6">
               <p className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white leading-relaxed">
