@@ -35,7 +35,7 @@ const GreenBanner = () => {
             </h3>
             
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 max-w-2xl">
-              Rejoignez une communauté dynamique de professionnels la tech ivoiriens passionnés par l'open source et l'innovation technologique.
+              Rejoignez une communauté dynamique de professionnels ivoiriens de la tech passionnés par l'open source et l'innovation technologique.
             </p>
 
             {/* Points clés */}
