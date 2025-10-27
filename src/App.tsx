@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import Home from './pages/Home';
+import AllProjects from './pages/AllProjects';
 import Dashboard from './pages/Dashboard';
 import AuthPage from './components/auth/AuthPage';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -34,6 +35,7 @@ function App() {
           
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<AllProjects />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route
               path="/dashboard"
