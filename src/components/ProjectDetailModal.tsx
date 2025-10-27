@@ -140,7 +140,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: ProjectDetailModalProp
             {/* Author */}
             <div className="mb-8">
               <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
-                Author
+                Auteur
               </h3>
               <p className="text-gray-900 dark:text-white font-semibold">{project.author}</p>
             </div>
