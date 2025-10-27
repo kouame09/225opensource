@@ -42,7 +42,7 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
               <>
                 <button
                   onClick={handleContribution}
-                  className="hidden md:inline-flex items-center space-x-2 px-4 py-2 bg-primary-400 text-white text-sm font-bold rounded-xl border-2 border-primary-400 hover:bg-primary-500 hover:border-primary-500 hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
+                  className="hidden md:inline-flex items-center space-x-2 px-4 py-2 bg-transparent text-primary-400 text-sm font-bold rounded-xl border-2 border-primary-400 hover:bg-primary-400 hover:text-white hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
                 >
                   <Github className="w-4 h-4" />
                   <span>Contribuer</span>
@@ -62,7 +62,7 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
               <>
                 <button
                   onClick={handleContribution}
-                  className="hidden md:inline-flex items-center space-x-2 px-4 py-2 bg-primary-400 text-white text-sm font-bold rounded-xl border-2 border-primary-400 hover:bg-primary-500 hover:border-primary-500 hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
+                  className="hidden md:inline-flex items-center space-x-2 px-4 py-2 bg-transparent text-primary-400 text-sm font-bold rounded-xl border-2 border-primary-400 hover:bg-primary-400 hover:text-white hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
                 >
                   <Github className="w-4 h-4" />
                   <span>Contribuer</span>
