@@ -87,13 +87,13 @@ const AllProjects = () => {
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <div className="text-center space-y-6 sm:space-y-8">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 dark:text-white leading-tight">
               Tous les projets
               <span className="block text-primary-400 mt-2">Open Source</span>
             </h1>
             
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Découvrez l'ensemble des projets open source de la Côte d'Ivoire
+              Découvrez l'ensemble des projets open source de 225 Open Source
             </p>
 
             {/* Barre de recherche */}
@@ -105,7 +105,7 @@ const AllProjects = () => {
                   placeholder="Rechercher un projet, un auteur, une technologie..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-6 py-4 text-base bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none focus:border-primary-400 dark:focus:border-primary-400 focus:ring-1 focus:ring-primary-400 dark:focus:ring-primary-400 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-200 shadow-sm hover:shadow-md"
+                  className="w-full pl-12 pr-6 py-4 text-base bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none focus:border-primary-400 dark:focus:border-primary-400 focus:ring-1 focus:ring-primary-400 dark:focus:ring-primary-400 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-200 shadow-sm hover:shadow-md"
                 />
               </div>
             </div>
