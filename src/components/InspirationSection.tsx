@@ -98,7 +98,7 @@ const InspirationSection = ({ projects }: InspirationSectionProps) => {
           </div>
 
           {/* Badge de statut */}
-          <div className="inline-flex items-center gap-3 px-5 py-3 bg-white dark:bg-gray-900 rounded-xl border-2 border-gray-200 dark:border-gray-800 shadow-sm">
+          <div className="inline-flex items-center gap-3 px-5 py-3 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800">
             <div className="relative flex items-center justify-center">
               <div className="absolute w-3 h-3 bg-green-400 rounded-full animate-ping opacity-75" />
               <div className="relative w-2 h-2 bg-green-500 rounded-full" />
@@ -115,7 +115,7 @@ const InspirationSection = ({ projects }: InspirationSectionProps) => {
           <div className="absolute -inset-4 bg-gradient-to-br from-primary-100 to-purple-100 dark:from-primary-900/20 dark:to-purple-900/20 rounded-3xl opacity-50 blur-2xl" />
           
           {/* Carte de citation */}
-          <div className="relative bg-green-20 dark:bg-gray-900/10 rounded-2xl p-8 sm:p-10 border-2 border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+          <div className="relative bg-green-20 dark:bg-gray-900/10 rounded-2xl p-8 sm:p-10 border border-gray-200 dark:border-gray-800 overflow-hidden">
             {/* Motif de lignes diagonales */}
             <div className="absolute top-0 left-0 right-0 h-24 opacity-10">
               <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
