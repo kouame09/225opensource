@@ -27,7 +27,7 @@ const GreenBanner = () => {
               </span>
             </div>
             
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-900 dark:text-white leading-tight">
               Partagez, Collaborez,
               <span className="block text-green-600 dark:text-green-400 mt-1">
                 Innovez ensemble

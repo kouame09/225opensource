@@ -56,7 +56,7 @@ const InspirationSection = ({ projects }: InspirationSectionProps) => {
               </span>
             </div>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white leading-tight">
               L'écosystème <span className="block text-primary-400 m-2">Open Source</span>
               <span className="block mt-2">de Côte d'Ivoire</span>
             </h2>
@@ -70,10 +70,10 @@ const InspirationSection = ({ projects }: InspirationSectionProps) => {
           <div className="flex gap-8 sm:gap-12">
             <div className="space-y-2">
               <div className="flex items-baseline gap-2">
-                <span className="text-5xl sm:text-6xl font-black text-gray-900 dark:text-white">
+                <span className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white">
                   {animatedStats.totalProjects}
                 </span>
-                <span className="text-2xl font-bold text-primary-400">+</span>
+                <span className="text-2xl font-semibold text-primary-400">+</span>
               </div>
               <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-400">
                 <Code2 className="w-4 h-4 text-primary-400" />
@@ -85,10 +85,10 @@ const InspirationSection = ({ projects }: InspirationSectionProps) => {
 
             <div className="space-y-2">
               <div className="flex items-baseline gap-2">
-                <span className="text-5xl sm:text-6xl font-black text-gray-900 dark:text-white">
+                <span className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white">
                   {animatedStats.totalContributors}
                 </span>
-                <span className="text-2xl font-bold text-primary-400">+</span>
+                <span className="text-2xl font-semibold text-primary-400">+</span>
               </div>
               <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-400">
                 <Users className="w-4 h-4 text-primary-400" />
@@ -119,7 +119,7 @@ const InspirationSection = ({ projects }: InspirationSectionProps) => {
             <Quote className="w-12 h-12 text-primary-400 mb-6 opacity-50" />
             
             <blockquote className="space-y-6">
-              <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-relaxed">
+              <p className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white leading-relaxed">
                 "Chaque contribution est une graine plantée pour l'innovation de demain. 
                 <span className="block mt-3 text-primary-400">
                   Ensemble, cultivons un écosystème tech ivoirien florissant."

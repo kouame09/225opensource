@@ -12,7 +12,7 @@ const FeatureSection = () => {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white leading-tight">
             Construisons ensemble l'avenir de la tech en Côte d'Ivoire
           </h2>
 
@@ -88,19 +88,19 @@ const FeatureSection = () => {
                 <div className="h-2 bg-primary-400 rounded w-3/4"></div>
                 <div className="h-2 bg-blue-400 rounded w-1/2"></div>
                 <div className="h-2 bg-purple-400 rounded w-5/6"></div>
-                <div className="h-2 bg-pink-400 rounded w-2/3"></div>
+                <div className="h-2 bg-orange-400 rounded w-2/3"></div>
               </div>
 
               {/* Stats cards */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-gradient-to-br from-primary-50 to-blue-50 dark:from-primary-900/20 dark:to-blue-900/20 rounded-xl p-4 border border-primary-200/50 dark:border-primary-800/50">
+                <div className="bg-gradient-to-br bg-primary-50 dark:from-primary-900/20 dark:to-blue-900/20 rounded-xl p-4 border border-primary-200/50 dark:border-primary-800/50">
                   <div className="text-2xl font-bold text-primary-400">50+</div>
                   <div className="text-xs text-gray-600 dark:text-gray-400">
                     Projets actifs
                   </div>
                 </div>
-                <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-4 border border-purple-200/50 dark:border-purple-800/50">
-                  <div className="text-2xl font-bold text-purple-400">30+</div>
+                <div className="bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-orange-200/50 dark:border-orange-800/50">
+                  <div className="text-2xl font-bold text-orange-400">30+</div>
                   <div className="text-xs text-gray-600 dark:text-gray-400">
                     Développeurs
                   </div>
