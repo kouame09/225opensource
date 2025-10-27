@@ -1,48 +1,6 @@
-import { useEffect, useState } from 'react';
 import { Code2, Users, Quote } from 'lucide-react';
-import { Project } from '../types';
 
-interface InspirationSectionProps {
-  projects: Project[];
-}
-
-const InspirationSection = ({ projects }: InspirationSectionProps) => {
-  const [animatedStats, setAnimatedStats] = useState({
-    totalProjects: 0,
-    totalContributors: 0,
-  });
-
-  // Calculer les statistiques réelles
-  const stats = {
-    totalProjects: projects.length,
-    totalContributors: new Set(projects.map(p => p.author)).size,
-  };
-
-  // Animation des compteurs
-  useEffect(() => {
-    const duration = 2000;
-    const steps = 60;
-    const stepDuration = duration / steps;
-
-    let currentStep = 0;
-    const interval = setInterval(() => {
-      currentStep++;
-      const progress = currentStep / steps;
-
-      setAnimatedStats({
-        totalProjects: Math.floor(stats.totalProjects * progress),
-        totalContributors: Math.floor(stats.totalContributors * progress),
-      });
-
-      if (currentStep >= steps) {
-        clearInterval(interval);
-        setAnimatedStats(stats);
-      }
-    }, stepDuration);
-
-    return () => clearInterval(interval);
-  }, [projects.length]);
-
+const InspirationSection = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 sm:py-20 lg:py-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -69,27 +27,15 @@ const InspirationSection = ({ projects }: InspirationSectionProps) => {
           {/* Statistiques minimalistes */}
           <div className="flex gap-8 sm:gap-12">
             <div className="space-y-2">
-              <div className="flex items-baseline gap-2">
-                <span className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white">
-                  {animatedStats.totalProjects}
-                </span>
-                <span className="text-2xl font-semibold text-primary-400">+</span>
-              </div>
               <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-400">
                 <Code2 className="w-4 h-4 text-primary-400" />
                 <span>Projets Open Source</span>
               </div>
             </div>
 
-            <div className="h-20 w-px bg-gray-200 dark:bg-gray-800" />
+            <div className="h-auto self-stretch w-px bg-gray-200 dark:bg-gray-800" />
 
             <div className="space-y-2">
-              <div className="flex items-baseline gap-2">
-                <span className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white">
-                  {animatedStats.totalContributors}
-                </span>
-                <span className="text-2xl font-semibold text-primary-400">+</span>
-              </div>
               <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-400">
                 <Users className="w-4 h-4 text-primary-400" />
                 <span>Développeurs actifs</span>

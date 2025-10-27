@@ -20,13 +20,13 @@ const BuyMeCoffee = () => {
 
             {/* Title */}
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3">
-              Soutenez le projet
+              Soutenez le projet 225 Open Source
             </h2>
 
             {/* Description */}
             <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Si cette plateforme vous est utile, offrez-moi un café pour
-              soutenir son développement ☕
+              Aidez-nous à grandir ! Votre soutien nous permet d'améliorer continuellement la plateforme, 
+              d'acquérir un nom de domaine personnalisé et bien plus pour la communauté. 
             </p>
 
             {/* Button */}
@@ -38,7 +38,7 @@ const BuyMeCoffee = () => {
                 className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#FFDD00] hover:bg-[#FFED4E] text-gray-900 font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 <Coffee className="w-5 h-5" />
-                <span>Buy me a coffee</span>
+                <span>Je soutiens le projet</span>
               </a>
             </div>
             <div className="flex items-center mt-6 justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
