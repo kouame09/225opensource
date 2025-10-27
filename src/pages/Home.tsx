@@ -100,16 +100,18 @@ const Home = () => {
               ))}
             </div>
             
-            {/* Bouton Voir tous les projets */}
-            <div className="flex justify-center mt-12">
-              <button
-                onClick={() => navigate('/projects')}
-                className="group inline-flex items-center space-x-3 px-8 py-4 bg-transparent text-primary-400 text-lg font-bold rounded-xl border-2 border-primary-400 hover:bg-primary-400 hover:text-white hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
-              >
-                <span>Voir tous les projets</span>
-                <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" />
-              </button>
-            </div>
+            {/* Bouton Voir tous les projets - affiché seulement s'il y a plus de 6 projets */}
+            {projects.length >= 6 && (
+              <div className="flex justify-center mt-12">
+                <button
+                  onClick={() => navigate('/projects')}
+                  className="group inline-flex items-center space-x-3 px-8 py-4 bg-transparent text-primary-400 text-lg font-bold rounded-xl border-2 border-primary-400 hover:bg-primary-400 hover:text-white hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
+                >
+                  <span>Voir tous les projets</span>
+                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" />
+                </button>
+              </div>
+            )}
           </>
         )}
       </main>
