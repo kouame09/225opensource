@@ -21,7 +21,7 @@ const GreenBanner = () => {
         <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Texte principal */}
           <div className="flex-1 text-center lg:text-left space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-400 dark:bg-gray-900/80 rounded-full border border-green-300 dark:border-green-700 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 dark:bg-gray-900/80 rounded-full border border-green-300 dark:border-green-700 shadow-sm">
               <span className="text-sm font-semibold text-white dark:text-green-400">
                 Bienvenue dans la communauté
               </span>
