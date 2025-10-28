@@ -23,7 +23,7 @@ const GreenBanner = () => {
           <div className="flex-1 text-left space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 dark:bg-gray-900/80 rounded-full border border-green-300 dark:border-green-700 shadow-sm">
               <span className="text-sm font-semibold text-white dark:text-green-400">
-                Bienvenue dans la communauté
+                Bienvenue dans 225 Open Source 
               </span>
             </div>
             

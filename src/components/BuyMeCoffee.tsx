@@ -25,8 +25,9 @@ const BuyMeCoffee = () => {
 
             {/* Description */}
             <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Aidez-nous à grandir ! Votre soutien nous permet d'améliorer continuellement la plateforme, 
-              d'acquérir un nom de domaine personnalisé et bien plus pour la communauté. 
+              Faisons grandir ensemble la plateforme ! <br /> Grâce à votre soutien,
+              nous pourrions continuer à la faire évoluer, obtenir un nom de
+              domaine unique et offrir encore plus à notre belle communauté.
             </p>
 
             {/* Button */}
@@ -35,7 +36,7 @@ const BuyMeCoffee = () => {
                 href="https://www.buymeacoffee.com/princekouame"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#FFDD00] hover:bg-[#FFED4E] text-gray-900 font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-orange-400 hover:bg-orange-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 <Coffee className="w-5 h-5" />
                 <span>Je soutiens le projet</span>

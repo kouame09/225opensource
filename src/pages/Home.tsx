@@ -122,7 +122,7 @@ const Home = () => {
         <CTA
           variant="hero"
           title="Prêt à contribuer ?"
-          description="Que vous soyez développeur web, mobile, backend ou fullstack, data analyst, data scientist, cybersécurité, DevOps..., votre contribution compte.
+          description="Que vous soyez en génie logiciel, data science, cybersécurité, réseaux informatiques..., votre contribution compte.
           Rejoignez-nous pour enrichir l'écosystème open-source ivoirien."
           primaryButtonText="Contribuer au projet"
           primaryButtonAction={handleContribution}

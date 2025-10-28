@@ -20,7 +20,7 @@ const InspirationSection = () => {
             </h2>
             
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              Une communauté passionnée qui partage, collabore et construit des solutions innovantes pour transformer le paysage technologique ivoirien et africain globalement.
+              Une communauté passionnée qui partage, collabore et construit des solutions innovantes pour transformer le paysage technologique ivoirien et africain de façon globale.
             </p>
           </div>
 
@@ -78,9 +78,9 @@ const InspirationSection = () => {
             
             <blockquote className="space-y-6">
               <p className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white leading-relaxed">
-                "Chaque contribution est une graine plantée pour l'innovation de demain. 
+                "Chaque contribution est une graine plantée pour le développement de l'économie numérique de notre pays. 
                 <span className="block mt-3 text-primary-400">
-                  Ensemble, cultivons un écosystème tech ivoirien florissant."
+                  Faisons de l’open-source ivoirien un véritable moteur d’innovation."
                 </span>
               </p>
               

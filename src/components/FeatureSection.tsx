@@ -13,14 +13,14 @@ const FeatureSection = () => {
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white leading-tight">
-            Construisons l'avenir de la tech ivoirienne
+            Construisons ensemble la <span className="text-primary-400 dark:text-primary-400">tech ivoirienne</span> 
           </h2>
 
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            225 OpenSource n’est pas qu’une plateforme, c’est un mouvement qui rassemble tous les professionnels de la tech
-            ivoirienne : génie logiciel, data science, cybersécurité, réseaux
-            informatiques, et bien plus encore pour créer, partager et innover
-            ensemble.
+            225 Open Source n’est pas qu’une plateforme, c’est un mouvement ayant
+            pour but de promouvoir l’open-source en Côte d’Ivoire pour créer une
+            vraie dynamique locale, et contribuer ainsi au développement de
+            l'économie numérique de notre pays .
           </p>
 
           <div className="space-y-4 pt-4">
