@@ -92,7 +92,7 @@ const FeatureSection = () => {
 
               {/* Stats cards */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-gradient-to-br bg-primary-50 dark:from-primary-900/20 dark:to-blue-900/20 rounded-xl p-4 border border-primary-200/50 dark:border-primary-800/50">
+                <div className="bg-gradient-to-br bg-primary-50 dark:bg-primary-900/20 rounded-xl p-4 border border-primary-200/50 dark:border-primary-800/50">
                   <div className="text-2xl font-bold text-primary-400">50+</div>
                   <div className="text-xs text-gray-600 dark:text-gray-400">
                     Projets actifs
