@@ -11,18 +11,18 @@ const AuthPage = () => {
       
       <div className="relative z-10 w-full max-w-6xl flex flex-col lg:flex-row items-center gap-12">
         {/* Left side - Branding */}
-        <div className="flex-1 text-center lg:text-left space-y-8">
+        <div className="flex-1 text-left space-y-8">
           <div>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
               225 <span className="text-primary-400">OpenSource</span>
             </h1>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
               Découvrez, partagez et gérez des projets open-source de la vibrante communauté tech ivoirienne.
             </p>
           </div>
 
           {/* Illustration minimaliste */}
-          <div className="relative max-w-md mx-auto lg:mx-0">
+          <div className="hidden md:block relative max-w-md">
             <div className="bg-gradient-to-br from-primary-50 to-green-50 dark:from-primary-900/20 dark:to-green-900/20 rounded-2xl p-8 border-2 border-primary-200 dark:border-primary-800/50">
               {/* Code blocks illustration */}
               <div className="space-y-4">
@@ -59,7 +59,7 @@ const AuthPage = () => {
           </div>
 
           {/* Features list */}
-          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+          <div className="flex flex-wrap gap-4 justify-start">
             <div className="flex items-center gap-2">
               <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
