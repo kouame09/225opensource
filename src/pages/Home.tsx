@@ -88,6 +88,19 @@ const Home = () => {
       <InspirationSection />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-12 sm:pb-16 lg:pb-20">
+        {/* Barre horizontale supérieure en pointillé */}
+        <div className="w-full border-t border-dashed border-gray-300 dark:border-gray-700 mb-12"></div>
+        
+        {/* Titre de la section */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white">
+            Projets <span className="text-primary-400">récents</span>
+          </h2>
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Les derniers projets open-source ajoutés par la communauté tech ivoirienne
+          </p>
+        </div>
+        
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lime-400"></div>
@@ -114,6 +127,9 @@ const Home = () => {
             )}
           </>
         )}
+        
+        {/* Barre horizontale inférieure en pointillé */}
+        <div className="w-full border-t border-dashed border-gray-300 dark:border-gray-700 mt-20"></div>
       </main>
 
       <FeatureSection />
