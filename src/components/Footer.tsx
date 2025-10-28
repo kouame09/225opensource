@@ -5,7 +5,7 @@ const Footer = () => {
         <p className="text-sm text-gray-500 dark:text-gray-400">
           Powered by <span className="text-primary-400 font-bold">225OS</span> ❤️ - Driven by{' '}
           <a
-            href="https://github.com/kouame09"
+            href="https://www.princekouame.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary-400 hover:text-primary-300 font-semibold transition-colors"
