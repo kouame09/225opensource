@@ -27,7 +27,7 @@ const BuyMeCoffee = () => {
             <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               Faisons grandir ensemble la plateforme ! <br /> Grâce à votre soutien,
               nous pourrions continuer à la faire évoluer, obtenir un nom de
-              domaine unique et offrir encore plus à notre belle communauté.
+              domaine professionnel et offrir encore plus à notre belle communauté.
             </p>
 
             {/* Button */}

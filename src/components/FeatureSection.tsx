@@ -20,7 +20,7 @@ const FeatureSection = () => {
             225 Open Source n’est pas qu’une plateforme, c’est un mouvement ayant
             pour but de promouvoir l’open-source en Côte d’Ivoire pour créer une
             vraie dynamique locale, et contribuer ainsi au développement de
-            l'économie numérique de notre pays .
+            l'économie numérique de notre pays.
           </p>
 
           <div className="space-y-4 pt-4">
@@ -30,11 +30,10 @@ const FeatureSection = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                  Code de qualité
+                  L’open source, une école à ciel ouvert
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Des projets soigneusement documentés et maintenus par la
-                  communauté
+                 Apprendre en pratiquant, progresser en collaborant et grandir en partageant.
                 </p>
               </div>
             </div>
@@ -45,10 +44,10 @@ const FeatureSection = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                  Innovation locale
+                  Socle de l’innovation numérique locale
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Des solutions créées par et pour les développeurs ivoiriens
+                  Offre des fondations solides pour bâtir des projets, accélérer l’innovation et faire naître de nouvelles startups
                 </p>
               </div>
             </div>
@@ -59,10 +58,10 @@ const FeatureSection = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                  Communauté bienveillante
+                  Un moteur pour l’économie numérique locale
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Un espace d'entraide et de partage de connaissances
+                  L’open source stimule la croissance et le dynamisme technologique d’un pays.
                 </p>
               </div>
             </div>

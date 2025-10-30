@@ -15,7 +15,7 @@ const InspirationSection = () => {
             </div>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white leading-tight">
-              L'écosystème <span className="block text-primary-400 m-2">Open Source</span>
+              L'écosystème <span className="block text-primary-400">Open Source</span>
               <span className="block mt-2">de Côte d'Ivoire</span>
             </h2>
             
