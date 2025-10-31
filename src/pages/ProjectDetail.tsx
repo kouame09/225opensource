@@ -59,7 +59,7 @@ const ProjectDetail = () => {
   const handleShare = async () => {
     const shareData = {
       title: `${project?.name} - 225 OpenSource`,
-      text: `🚀 Voici ${project?.name} ! Un projet open source disponible sur 225 Open Source 🇨🇮, développé avec ${project?.techStack.slice(0, 2).join(", ")}. ! Clique ici pour le consulter :`,
+      text: `Voici ${project?.name} ! Un projet open source disponible sur 225 Open Source 🇨🇮, développé avec ${project?.techStack.slice(0, 2).join(", ")}. ! Clique ici pour le consulter :`,
       url: window.location.href
     };
 
