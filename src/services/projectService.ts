@@ -165,6 +165,43 @@ export const getProjectById = async (projectId: string): Promise<Project | null>
   }
 };
 
+// Get a single project by name
+export const getProjectByName = async (projectName: string): Promise<Project | null> => {
+  try {
+    const q = query(
+      collection(db, PROJECTS_COLLECTION),
+      where('name', '==', projectName)
+    );
+    
+    const querySnapshot = await getDocs(q);
+    
+    if (!querySnapshot.empty) {
+      const docSnap = querySnapshot.docs[0];
+      const data = docSnap.data();
+      return {
+        id: docSnap.id,
+        name: data.name,
+        description: data.description,
+        techStack: data.techStack || [],
+        author: data.author,
+        githubUrl: data.githubUrl,
+        stars: data.stars || 0,
+        forks: data.forks || 0,
+        lastUpdate: data.lastUpdate,
+        imageUrl: data.imageUrl,
+        userId: data.userId,
+        createdAt: timestampToString(data.createdAt),
+        updatedAt: timestampToString(data.updatedAt),
+      };
+    }
+    
+    return null;
+  } catch (error: unknown) {
+    console.error('Error fetching project by name:', error);
+    return null;
+  }
+};
+
 // Update a project
 export const updateProject = async (projectId: string, projectData: Partial<Project>) => {
   try {

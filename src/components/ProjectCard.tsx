@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ExternalLink, Star, GitFork } from 'lucide-react';
 import { Project } from '../types';
-import ProjectDetailModal from './ProjectDetailModal';
 
 interface ProjectCardProps {
   project: Project;
@@ -9,7 +9,12 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+  
+  // Create URL-friendly slug from project name
+  const createSlug = (name: string) => {
+    return name.replace(/\s+/g, '-');
+  };
   
   // Générer l'URL de l'image Open Graph du repo GitHub
   const getGitHubPreviewUrl = (githubUrl: string) => {
@@ -31,7 +36,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         className="group relative bg-white dark:bg-gray-900 rounded-3xl transition-all duration-300 overflow-visible border border-gray-200 dark:border-gray-800 transform hover:-translate-y-2 cursor-pointer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => navigate(`/project/${createSlug(project.name)}`)}
       >
       {/* Aperçu du repo au survol */}
       {isHovered && previewUrl && (
@@ -92,7 +97,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              setIsModalOpen(true);
+              navigate(`/project/${createSlug(project.name)}`);
             }}
             className="inline-flex items-center space-x-2 px-4 py-2 bg-primary-400 text-white text-sm font-bold rounded-xl border-2 border-primary-400 hover:bg-primary-500 hover:border-primary-500 hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
           >
@@ -102,12 +107,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
       </div>
       </div>
-
-      <ProjectDetailModal
-        project={project}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </>
   );
 };

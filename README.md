@@ -1,102 +1,187 @@
-# 225 Open Source : Répertoire de Projets Open Source Made in Côte d'Ivoire
+# 225 Open Source
 
-Retrouvez les projets open-source de la communauté tech ivoirienne. Explorez, découvrez et contribuez à des projets passionnants.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![GitHub stars](https://img.shields.io/github/stars/kouame09/225opensource.svg?style=social)](https://github.com/kouame09/225opensource/stargazers)
 
-## Description
+> Répertoire des projets open source développés pour la communauté tech ivoirienne.
 
-Ce projet est un répertoire dédié aux projets open-source développés par la communauté tech ivoirienne. Il vise à promouvoir et à faciliter la découverte de projets innovants, tout en encourageant la collaboration et les contributions.
+## 📋 Table des matières
 
-## Fonctionnalités
+- [Présentation](#-présentation)
+- [Fonctionnalités](#-fonctionnalités)
+- [Technologies utilisées](#-technologies-utilisées)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Développement](#-développement)
+- [Structure du projet](#-structure-du-projet)
+- [Contribution](#-contribution)
+- [Licence](#-licence)
+- [Remerciements](#-remerciements)
 
-- Liste et recherche de projets open-source
-- Informations détaillées sur chaque projet
-- Interface utilisateur moderne et intuitive
-- Support pour les contributions communautaires
+## 🌟 Présentation
 
-## Installation
+225 Open Source est une plateforme qui référence et met en avant les projets open source développés par la communauté tech ivoirienne. Notre objectif est de promouvoir l'innovation locale, de faciliter la découverte de projets intéressants et d'encourager la collaboration entre professionnels de la tech Ivoirienne.
 
-Pour installer et exécuter ce projet localement, suivez ces étapes :
+## ✨ Fonctionnalités
 
-1. Clonez le dépôt :
+- 📂 **Catalogue** : Parcourez une collection croissante de projets open source
+- 🔍 **Recherche avancée** : Trouvez des projets par nom, technologie ou catégorie
+- 📊 **Statistiques** : Visualisez les tendances des projets (étoiles, forks, mises à jour)
+- 👥 **Communauté** : Découvrez les contributeurs et mainteneurs actifs
+- 🌍 **Localisation** : Focus sur les projets ivoiriens et africains
+
+## 🛠 Technologies utilisées
+
+- **Frontend** :
+  - React 18 avec TypeScript
+  - Vite comme bundler
+  - TailwindCSS pour le styling
+  - React Router pour la navigation
+  - Lucide Icons pour les icônes
+
+- **Backend & Services** :
+  - Firebase pour l'authentification et la base de données
+  - Supabase comme alternative de backend
+
+- **Outils de développement** :
+  - ESLint et Prettier pour la qualité du code
+  - Git pour le contrôle de version
+  - GitHub pour l'hébergement et la collaboration
+
+## 🚀 Installation
+
+### Prérequis
+
+- Node.js (version 18 ou supérieure)
+- npm (version 9 ou supérieure) ou yarn
+- Compte Firebase (pour la configuration)
+
+### Étapes d'installation
+
+1. **Cloner le dépôt** :
    ```bash
    git clone https://github.com/kouame09/225opensource.git
    cd 225opensource
    ```
 
-2. Installez les dépendances :
+2. **Installer les dépendances** :
    ```bash
    npm install
+   # ou
+   yarn
    ```
 
-3. Démarrez le serveur de développement :
-   ```bash
-   npm start
+3. **Configurer les variables d'environnement** :
+   Créez un fichier `.env` à la racine du projet avec les variables suivantes :
+   ```env
+   VITE_FIREBASE_API_KEY=votre_cle_api
+   VITE_FIREBASE_AUTH_DOMAIN=votre_projet.firebaseapp.com
+   VITE_FIREBASE_PROJECT_ID=votre_projet_id
+   VITE_FIREBASE_STORAGE_BUCKET=votre_bucket.appspot.com
+   VITE_FIREBASE_MESSAGING_SENDER_ID=votre_sender_id
+   VITE_FIREBASE_APP_ID=votre_app_id
+
    ```
 
-4. Ouvrez votre navigateur et accédez à `http://localhost:5173`
-
-## Utilisation
-
-Une fois le serveur démarré, vous pouvez :
-- Parcourir la liste des projets
-- Rechercher des projets par nom ou technologie
-- Voir les détails de chaque projet
-- Contribuer en ajoutant vos propres projets
-
-## Contribution
-
-Nous accueillons les contributions de la communauté ! Il y a plusieurs façons de contribuer :
-
-### Ajouter votre projet
-
-Vous avez développé un projet open-source ? Ajoutez-le à notre répertoire !
-
-1. **Éditez le fichier `src/data.ts`**
-   ```bash
-   # Dans votre fork du projet
-   nano src/data.ts  # ou utilisez votre éditeur préféré
-   ```
-
-2. **Ajoutez votre projet** en suivant le format spécifié dans les commentaires du fichier `src/data.ts`
-
-3. **Testez vos changements** :
+4. **Démarrer l'application en mode développement** :
    ```bash
    npm run dev
+   # ou
+   yarn dev
    ```
 
-4. **Créez une Pull Request** avec une description claire de votre projet
+5. **Ouvrir dans le navigateur** :
+   L'application sera disponible à l'adresse : [http://localhost:5173](http://localhost:5173)
 
-### Contribuer au code
+## ⚙️ Configuration
 
-Pour les améliorations du code source :
+### Variables d'environnement
 
-1. Forkez le projet
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
-3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Pushez vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une Pull Request
+| Variable | Description | Requis |
+|----------|-------------|--------|
+| `VITE_FIREBASE_*` | Configuration Firebase | Oui |
 
-### Signaler un problème
+### Scripts NPM
 
-Vous avez trouvé un bug ou avez une suggestion ? [Ouvrez une issue](https://github.com/kouame09/225opensource/issues) sur GitHub.
+- `dev` : Lance le serveur de développement
+- `build` : Construit l'application pour la production
+- `preview` : Prévient l'application de production localement
+- `lint` : Exécute ESLint pour vérifier le code
+- `typecheck` : Vérifie les types TypeScript
 
-## Format des projets
+## 🛠 Développement
 
-Chaque projet doit respecter l'interface `Project` définie dans `src/types/index.ts` :
+### Structure du projet
 
-```typescript
-interface Project {
-  id: string;           // Identifiant unique
-  name: string;         // Nom du projet
-  description: string;  // Description courte
-  techStack: string[];  // Technologies utilisées
-  author: string;       // Votre nom/pseudo
-  githubUrl: string;    // Lien vers le repo GitHub
-  stars: number;        // Nombre d'étoiles GitHub
-  forks: number;        // Nombre de forks GitHub
-  lastUpdate: string;   // Format: YYYY-MM-DD
-}
 ```
+src/
+├── components/     # Composants réutilisables
+├── config/         # Fichiers de configuration
+├── contexts/       # Contextes React
+├── pages/          # Pages de l'application
+├── services/       # Services (API, Firebase, etc.)
+├── types/          # Définitions de types TypeScript
+└── utils/          # Utilitaires et helpers
+```
+
+### Standards de code
+
+- Utilisez TypeScript pour tout nouveau code
+- Suivez les règles ESLint et Prettier configurées
+- Écrivez des tests unitaires pour les nouvelles fonctionnalités
+- Documentez les composants et fonctions complexes
+- Utilisez des noms de variables et fonctions descriptifs
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! Voici comment contribuer :
+
+1. **Signaler un bug** : 
+   - Vérifiez d'abord si le bug n'a pas déjà été signalé dans les [issues](https://github.com/kouame09/225opensource/issues)
+   - Créez une nouvelle issue en suivant le modèle fourni
+
+2. **Proposer une amélioration** :
+   - Ouvrez une issue pour discuter de votre proposition
+   - Une fois validée, vous pouvez commencer à travailler dessus
+
+3. **Soumettre du code** :
+   1. Forkez le dépôt
+   2. Créez une branche pour votre fonctionnalité : `git checkout -b feature/nouvelle-fonctionnalite`
+   3. Committez vos changements : `git commit -m 'Ajoute une nouvelle fonctionnalité'`
+   4. Poussez vers votre fork : `git push origin feature/nouvelle-fonctionnalite`
+   5. Créez une Pull Request
+
+### Format des commits
+
+Nous utilisons [Conventional Commits](https://www.conventionalcommits.org/) :
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+Exemple :
+```
+feat(auth): ajoute la connexion avec Google
+
+Ajoute la possibilité de se connecter avec un compte Google en utilisant Firebase Auth.
+
+Closes #123
+```
+
+## 📄 Licence
+
+Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## 🙏 Remerciements
+
+- À tous les contributeurs qui rendent ce projet possible
+- À la communauté tech ivoirienne pour son dynamisme et sa créativité
+- Aux mainteneurs des projets open source utilisés dans ce projet
 
 Consultez les commentaires détaillés dans le fichier `src/data.ts` pour plus d'instructions.
 
@@ -106,10 +191,13 @@ Consultez les commentaires détaillés dans le fichier `src/data.ts` pour plus d
 - TypeScript
 - Tailwind CSS
 - Vite
+- Firebase
+- Lucide Icons
+
 
 ## Auteur
 
-Développé par la communauté tech ivoirienne.
+Développé par Prince Kouamé et soutenu par la communauté tech ivoirienne.
 
 ## Licence
 

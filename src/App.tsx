@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import AllProjects from './pages/AllProjects';
 import Dashboard from './pages/Dashboard';
+import ProjectDetail from './pages/ProjectDetail';
 import AuthPage from './components/auth/AuthPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -36,6 +37,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<AllProjects />} />
+            <Route path="/project/:name" element={<ProjectDetail />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route
               path="/dashboard"
