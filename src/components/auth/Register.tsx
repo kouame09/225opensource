@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Lock, User, Chrome } from 'lucide-react';
+import { Mail, Lock, User, Chrome, MapPin } from 'lucide-react';
 import { registerWithEmail, loginWithGoogle } from '../../services/authService';
+import { isUserInCoteDivoire } from '../../services/locationService';
 
 interface RegisterProps {
   onToggleMode: () => void;
@@ -15,9 +16,39 @@ const Register = ({ onToggleMode }: RegisterProps) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [checkingLocation, setCheckingLocation] = useState(true);
+  const [isLocationAllowed, setIsLocationAllowed] = useState(false);
+
+  // Check user location on component mount
+  useEffect(() => {
+    const checkLocation = async () => {
+      try {
+        const inCoteDivoire = await isUserInCoteDivoire();
+        setIsLocationAllowed(inCoteDivoire);
+
+        if (!inCoteDivoire) {
+          setError('Accès restreint : Cette plateforme est réservée aux utilisateurs en Côte d\'Ivoire uniquement.');
+        }
+      } catch (err) {
+        console.error('Error checking location:', err);
+        // On error, allow access (fail open) to avoid blocking legitimate users
+        setIsLocationAllowed(true);
+      } finally {
+        setCheckingLocation(false);
+      }
+    };
+
+    checkLocation();
+  }, []);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isLocationAllowed) {
+      setError('Accès restreint : Cette plateforme est réservée aux utilisateurs en Côte d\'Ivoire uniquement.');
+      return;
+    }
+
     setError('');
 
     if (password !== confirmPassword) {
@@ -43,6 +74,11 @@ const Register = ({ onToggleMode }: RegisterProps) => {
   };
 
   const handleGoogleLogin = async () => {
+    if (!isLocationAllowed) {
+      setError('Accès restreint : Cette plateforme est réservée aux utilisateurs en Côte d\'Ivoire uniquement.');
+      return;
+    }
+
     setError('');
     setLoading(true);
 
@@ -56,6 +92,20 @@ const Register = ({ onToggleMode }: RegisterProps) => {
     }
   };
 
+  // Show loading state while checking location
+  if (checkingLocation) {
+    return (
+      <div className="w-full max-w-md">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+          <div className="flex flex-col items-center justify-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-400 mb-4"></div>
+            <p className="text-gray-600 dark:text-gray-400">Vérification de votre localisation...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full max-w-md">
       <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
@@ -66,7 +116,23 @@ const Register = ({ onToggleMode }: RegisterProps) => {
           Rejoignez-nous pour partager vos projets
         </p>
 
-        {error && (
+        {!isLocationAllowed && (
+          <div className="mb-6 p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg">
+            <div className="flex items-start gap-3">
+              <MapPin className="w-5 h-5 text-orange-600 dark:text-orange-400 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="text-orange-600 dark:text-orange-400 text-sm font-semibold mb-1">
+                  Accès restreint
+                </p>
+                <p className="text-orange-600 dark:text-orange-400 text-sm">
+                  Cette plateforme est réservée aux utilisateurs en Côte d'Ivoire uniquement.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {error && isLocationAllowed && (
           <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
             <p className="text-red-600 dark:text-red-400 text-sm">{error}</p>
           </div>
@@ -144,7 +210,7 @@ const Register = ({ onToggleMode }: RegisterProps) => {
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || !isLocationAllowed}
             className="w-full bg-primary-400 hover:bg-primary-500 text-white font-semibold py-3 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? 'Création du compte...' : 'Créer un compte'}
@@ -159,7 +225,7 @@ const Register = ({ onToggleMode }: RegisterProps) => {
 
         <button
           onClick={handleGoogleLogin}
-          disabled={loading}
+          disabled={loading || !isLocationAllowed}
           className="w-full bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white font-semibold py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Chrome className="w-5 h-5" />
