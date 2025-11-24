@@ -66,7 +66,15 @@ const Register = ({ onToggleMode }: RegisterProps) => {
     const { user, error: registerError } = await registerWithEmail(email, password, displayName);
 
     if (registerError) {
-      setError(registerError);
+      if (registerError.includes('auth/email-already-in-use')) {
+        setError('Cet email est déjà utilisé par un autre compte.');
+      } else if (registerError.includes('auth/invalid-email')) {
+        setError('Adresse email invalide.');
+      } else if (registerError.includes('auth/weak-password')) {
+        setError('Le mot de passe est trop faible.');
+      } else {
+        setError('Une erreur est survenue lors de l\'inscription.');
+      }
       setLoading(false);
     } else if (user) {
       navigate('/dashboard');
@@ -85,7 +93,11 @@ const Register = ({ onToggleMode }: RegisterProps) => {
     const { user, error: loginError } = await loginWithGoogle();
 
     if (loginError) {
-      setError(loginError);
+      if (loginError.includes('auth/popup-closed-by-user')) {
+        setError('Connexion annulée.');
+      } else {
+        setError('Une erreur est survenue avec Google.');
+      }
       setLoading(false);
     } else if (user) {
       navigate('/dashboard');

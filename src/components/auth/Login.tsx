@@ -53,7 +53,15 @@ const Login = ({ onToggleMode }: LoginProps) => {
     const { user, error: loginError } = await loginWithEmail(email, password);
 
     if (loginError) {
-      setError(loginError);
+      if (loginError.includes('auth/invalid-credential') ||
+        loginError.includes('auth/user-not-found') ||
+        loginError.includes('auth/wrong-password')) {
+        setError('Email ou mot de passe incorrect.');
+      } else if (loginError.includes('auth/too-many-requests')) {
+        setError('Trop de tentatives échouées. Veuillez réessayer plus tard.');
+      } else {
+        setError('Une erreur est survenue lors de la connexion.');
+      }
       setLoading(false);
     } else if (user) {
       navigate('/dashboard');
@@ -72,7 +80,11 @@ const Login = ({ onToggleMode }: LoginProps) => {
     const { user, error: loginError } = await loginWithGoogle();
 
     if (loginError) {
-      setError(loginError);
+      if (loginError.includes('auth/popup-closed-by-user')) {
+        setError('Connexion annulée.');
+      } else {
+        setError('Une erreur est survenue avec Google.');
+      }
       setLoading(false);
     } else if (user) {
       navigate('/dashboard');
