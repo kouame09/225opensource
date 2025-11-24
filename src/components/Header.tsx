@@ -32,7 +32,7 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
               alt="225OpenSource Logo"
               className="w-12 h-12 rounded-lg"
             />
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
+            <h1 className={`text-2xl font-semibold text-primary-400 ${location.pathname === '/dashboard' ? 'hidden sm:block' : ''}`}>
               225OS
             </h1>
           </div>
@@ -42,7 +42,7 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
               <>
                 <button
                   onClick={() => navigate('/projects')}
-                  className="hidden md:inline-flex items-center space-x-2 px-4 py-2 bg-transparent text-gray-600 dark:text-gray-300 text-sm font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+                  className="inline-flex items-center space-x-2 px-4 py-2 bg-transparent text-gray-600 dark:text-gray-300 text-sm font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
                 >
                   <FolderOpen className="w-4 h-4" />
                   <span>Projets</span>
