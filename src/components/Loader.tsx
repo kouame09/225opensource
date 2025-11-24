@@ -23,53 +23,42 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
   if (!isVisible) return null;
 
   return (
-    <div 
-      className={`fixed inset-0 z-[9999] bg-gradient-to-br from-white via-primary-50 to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 flex items-center justify-center transition-all duration-600 ${
-        isFading ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
-      }`}
+    <div
+      className={`fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-all duration-600 ${isFading ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+        }`}
     >
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      
+
       <div className="relative flex flex-col items-center justify-center">
         {/* Logo container with glow */}
         <div className="relative mb-8">
           {/* Glow effect */}
           <div className="absolute inset-0 blur-3xl opacity-30 animate-pulse">
-            <div className="w-32 h-32 bg-primary-400 rounded-full"></div>
+            <div className="w-32 h-32"></div>
           </div>
-          
+
           {/* Logo */}
           <div className="relative">
             <img
               src="/logo.png"
               alt="225 OpenSource"
-              className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl shadow-2xl animate-float"
+              className="w-32 h-32 sm:w-48 sm:h-48 rounded-3xl animate-zoom-out"
             />
           </div>
-        </div>
-
-        {/* Text animation */}
-        <div className="text-center space-y-3">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white animate-fade-in">
-            225 <span className="text-primary-400">OpenSource</span>
-          </h1>
-        </div>
-
-        {/* Minimal spinner */}
-        <div className="mt-8 flex gap-2">
-          <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-          <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-          <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
         </div>
       </div>
 
       <style>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
+        @keyframes zoom-out {
+          0% {
+            transform: scale(2.5);
+            opacity: 0;
+            filter: blur(10px);
           }
-          50% {
-            transform: translateY(-10px);
+          100% {
+            transform: scale(1);
+            opacity: 1;
+            filter: blur(0);
           }
         }
 
@@ -84,16 +73,12 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
           }
         }
 
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
+        .animate-zoom-out {
+          animation: zoom-out 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
         .animate-fade-in {
-          animation: fade-in 0.8s ease-out 0.3s both;
-        }
-
-        .animate-fade-in-delay {
-          animation: fade-in 0.8s ease-out 0.6s both;
+          animation: fade-in 0.8s ease-out 0.5s both;
         }
 
         .bg-grid-pattern {

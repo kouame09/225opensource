@@ -33,10 +33,17 @@ function App() {
             setDarkMode={setDarkMode}
             handleContribution={handleContribution}
           />
-          
+
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<AllProjects />} />
+            <Route
+              path="/projects"
+              element={
+                <ProtectedRoute>
+                  <AllProjects />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/project/:name" element={<ProjectDetail />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route

@@ -1,4 +1,4 @@
-import { Moon, Sun, Github, LogOut } from 'lucide-react';
+import { Moon, Sun, Github, LogOut, FolderOpen } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { logout } from '../services/authService';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -30,9 +30,9 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
             <img
               src="/logo.png"
               alt="225OpenSource Logo"
-              className="w-10 h-10 rounded-lg"
+              className="w-12 h-12 rounded-lg"
             />
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
               225OS
             </h1>
           </div>
@@ -41,13 +41,21 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
             {isAuthenticated ? (
               <>
                 <button
+                  onClick={() => navigate('/projects')}
+                  className="hidden md:inline-flex items-center space-x-2 px-4 py-2 bg-transparent text-gray-600 dark:text-gray-300 text-sm font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+                >
+                  <FolderOpen className="w-4 h-4" />
+                  <span>Projets</span>
+                </button>
+
+                <button
                   onClick={handleContribution}
                   className="hidden md:inline-flex items-center space-x-2 px-4 py-2 bg-transparent text-primary-400 text-sm font-bold rounded-xl border border-primary-400 hover:bg-primary-400 hover:text-white hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
                 >
                   <Github className="w-4 h-4" />
                   <span>Contribuer</span>
                 </button>
-                
+
                 {location.pathname === '/dashboard' && (
                   <button
                     onClick={handleLogout}
@@ -67,7 +75,7 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
                   <Github className="w-4 h-4" />
                   <span>Contribuer</span>
                 </button>
-                
+
                 {location.pathname !== '/auth' && (
                   <button
                     onClick={() => navigate('/auth')}

@@ -1,143 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO Meta Tags -->
-    <meta
-      name="description"
-      content="225OpenSource - Plateforme collaborative de projets open-source portée par la communauté tech ivoirienne. Explorez, découvrez et contribuez à des projets passionnants."
-    />
-    <meta
-      name="keywords"
-      content="225OpenSource, open source, project hub, development, collaboration, documentation, Côte d'Ivoire"
-    />
-    <meta name="author" content="225OpenSource Team" />
-    <meta name="theme-color" content="#22c55e" />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://225opensource.vercel.app/" />
-    <meta
-      property="og:title"
-      content="La vitrine des projets open-source de Côte d'Ivoire."
-    />
-    <meta
-      property="og:description"
-      content="La vitrine des projets open-source de Côte d'Ivoire."
-    />
-    <meta property="og:image" content="/logo.png" />
-    <meta property="og:site_name" content="225OpenSource" />
-    <meta property="og:locale" content="en_US" />
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="225OpenSource - Plateforme collaborative de projets open-source portée par la communauté tech ivoirienne. Explorez, découvrez et contribuez à des projets passionnants." />
+  <meta name="keywords"
+    content="225OpenSource, open source, project hub, development, collaboration, documentation, Côte d'Ivoire" />
+  <meta name="author" content="225OpenSource Team" />
+  <meta name="theme-color" content="#22c55e" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://225opensource.vercel.app/" />
-    <meta
-      name="twitter:title"
-      content="La vitrine des projets open-source de Côte d'Ivoire."
-    />
-    <meta
-      name="twitter:description"
-      content="La vitrine des projets open-source de Côte d'Ivoire."
-    />
-    <meta name="twitter:image" content="/logo.png" />
-    <meta name="twitter:creator" content="@225OpenSource" />
-    <meta name="twitter:site" content="@225OpenSource" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://225opensource.vercel.app/" />
+  <meta property="og:title" content="La vitrine des projets open-source de Côte d'Ivoire." />
+  <meta property="og:description" content="La vitrine des projets open-source de Côte d'Ivoire." />
+  <meta property="og:image" content="/logo.png" />
+  <meta property="og:site_name" content="225OpenSource" />
+  <meta property="og:locale" content="en_US" />
 
-    <title>
-      225 Open Source - La vitrine des projets open-source de Côte d'Ivoire.
-    </title>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://225opensource.vercel.app/" />
+  <meta name="twitter:title" content="La vitrine des projets open-source de Côte d'Ivoire." />
+  <meta name="twitter:description" content="La vitrine des projets open-source de Côte d'Ivoire." />
+  <meta name="twitter:image" content="/logo.png" />
+  <meta name="twitter:creator" content="@225OpenSource" />
+  <meta name="twitter:site" content="@225OpenSource" />
 
-    <!-- Custom Scrollbar Styles -->
+  <title>
+    225 Open Source - La vitrine des projets open-source de Côte d'Ivoire.
+  </title>
 
-    <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "twoizpqhr9");
-    </script>
-    
-    <style>
-      /* Webkit Scrollbar Styling */
-      ::-webkit-scrollbar {
-        width: 12px;
-      }
+  <!-- Custom Scrollbar Styles -->
 
-      ::-webkit-scrollbar-track {
-        background: #f1f5f9;
-      }
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] =
+        c[a] ||
+        function () {
+          (c[a].q = c[a].q || []).push(arguments);
+        };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "twoizpqhr9");
+  </script>
 
-      ::-webkit-scrollbar-track:hover {
-        background: #e2e8f0;
-      }
+  <style>
+    /* Webkit Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
 
-      ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #22c55e, #16a34a);
-        border-radius: 6px;
-        border: 2px solid #f1f5f9;
-      }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
 
-      ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, #16a34a, #15803d);
-        border: 2px solid #e2e8f0;
-      }
+    ::-webkit-scrollbar-track:hover {
+      background: #e2e8f0;
+    }
 
-      ::-webkit-scrollbar-corner {
-        background: #f1f5f9;
-      }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-radius: 6px;
+      border: 2px solid #f1f5f9;
+    }
 
-      /* Firefox Scrollbar Styling */
-      * {
-        scrollbar-width: thin;
-        scrollbar-color: #22c55e #f1f5f9;
-      }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      border: 2px solid #e2e8f0;
+    }
 
-      /* Dark mode scrollbar */
-      .dark ::-webkit-scrollbar-track {
-        background: #1e293b;
-      }
+    ::-webkit-scrollbar-corner {
+      background: #f1f5f9;
+    }
 
-      .dark ::-webkit-scrollbar-track:hover {
-        background: #334155;
-      }
+    /* Firefox Scrollbar Styling */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #22c55e #f1f5f9;
+    }
 
-      .dark ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #22c55e, #16a34a);
-        border: 2px solid #1e293b;
-      }
+    /* Dark mode scrollbar */
+    .dark ::-webkit-scrollbar-track {
+      background: #1e293b;
+    }
 
-      .dark ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, #16a34a, #15803d);
-        border: 2px solid #334155;
-      }
+    .dark ::-webkit-scrollbar-track:hover {
+      background: #334155;
+    }
 
-      .dark ::-webkit-scrollbar-corner {
-        background: #1e293b;
-      }
+    .dark ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border: 2px solid #1e293b;
+    }
 
-      .dark * {
-        scrollbar-color: #22c55e #1e293b;
-      }
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      border: 2px solid #334155;
+    }
 
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    .dark ::-webkit-scrollbar-corner {
+      background: #1e293b;
+    }
+
+    .dark * {
+      scrollbar-color: #22c55e #1e293b;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

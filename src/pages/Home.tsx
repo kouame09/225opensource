@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, ArrowRight } from 'lucide-react';
+import { LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import WelcomeModal from '../components/WelcomeModal';
-import ProjectCard from '../components/ProjectCard';
+
 import Hero from '../components/Hero';
 import Footer from '../components/Footer';
 import Loader from '../components/Loader';
 import GreenBanner from '../components/GreenBanner';
 import InspirationSection from '../components/InspirationSection';
-import { Project } from '../types';
-import { getAllProjects } from '../services/projectService';
+
 import CTA from '../components/CTA';
 import Contributors from '../components/Contributors';
 import BuyMeCoffee from '../components/BuyMeCoffee';
@@ -19,10 +18,15 @@ import FeatureSection from '../components/FeatureSection';
 const Home = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
+
   const [showLoader, setShowLoader] = useState(true);
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    }
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -35,26 +39,7 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        // Fetch all projects from Firebase
-        const firebaseProjects = await getAllProjects();
-        // Sort by most recent and take only 6 projects
-        const sortedProjects = [...firebaseProjects].sort((a: Project, b: Project) =>
-          new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
-        );
-        setProjects(sortedProjects.slice(0, 6));
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-        setProjects([]);
-        setLoading(false);
-      }
-    };
 
-    fetchProjects();
-  }, []);
 
   const handleContribution = () => {
     window.open('https://github.com/kouame09/225opensource', '_blank');
@@ -87,50 +72,7 @@ const Home = () => {
       {/* Section Inspiration avec texte, chiffres et citation */}
       <InspirationSection />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-12 sm:pb-16 lg:pb-20">
-        {/* Barre horizontale supérieure en pointillé */}
-        <div className="w-full border-t border-dashed border-gray-300 dark:border-gray-700 mb-12"></div>
-        
-        {/* Titre de la section */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white">
-            Projets <span className="text-primary-400">récents</span>
-          </h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Les derniers projets open-source ajoutés par la communauté tech ivoirienne
-          </p>
-        </div>
-        
-        {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lime-400"></div>
-          </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
-              {projects.map((project: Project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-            
-            {/* Bouton Voir tous les projets - affiché seulement s'il y a plus de 6 projets */}
-            {projects.length >= 6 && (
-              <div className="flex justify-center mt-12">
-                <button
-                  onClick={() => navigate('/projects')}
-                  className="group inline-flex items-center space-x-3 px-8 py-4 bg-transparent text-primary-400 text-lg font-bold rounded-xl border-2 border-primary-400 hover:bg-primary-400 hover:text-white hover:shadow-lg hover:shadow-primary-400/50 transform hover:scale-105 transition-all duration-200"
-                >
-                  <span>Voir tous les projets</span>
-                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" />
-                </button>
-              </div>
-            )}
-          </>
-        )}
-        
-        {/* Barre horizontale inférieure en pointillé */}
-        <div className="w-full border-t border-dashed border-gray-300 dark:border-gray-700 mt-20"></div>
-      </main>
+
 
       <FeatureSection />
 
