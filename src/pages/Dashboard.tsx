@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Star, GitFork, ExternalLink } from 'lucide-react';
+import { Plus, Edit, Trash2, Star, GitFork, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../contexts/ToastContext';
 import { getUserProjects, createProject, updateProject, deleteProject } from '../services/projectService';
 import { Project } from '../types';
 import ProjectForm from '../components/ProjectForm';
+
+const ITEMS_PER_PAGE = 10;
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -13,6 +15,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editingProject, setEditingProject] = useState<Project | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     if (user) {
@@ -187,80 +190,106 @@ const Dashboard = () => {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {projects.map((project) => (
-                <div
-                  key={project.id}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                        {project.name}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 mb-3">
-                        {project.description}
-                      </p>
+            <>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {projects.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE).map((project) => (
+                  <div
+                    key={project.id}
+                    className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                          {project.name}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 mb-3">
+                          {project.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.techStack.slice(0, 3).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium"
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.techStack.slice(0, 3).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.techStack.length > 3 && (
+                        <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">
+                          +{project.techStack.length - 3}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
+                      <div className="flex items-center gap-4">
+                        <span className="flex items-center gap-1">
+                          <Star className="w-4 h-4" />
+                          {project.stars}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <GitFork className="w-4 h-4" />
+                          {project.forks}
+                        </span>
+                      </div>
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-primary-400 hover:text-primary-500"
                       >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.techStack.length > 3 && (
-                      <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">
-                        +{project.techStack.length - 3}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    <div className="flex items-center gap-4">
-                      <span className="flex items-center gap-1">
-                        <Star className="w-4 h-4" />
-                        {project.stars}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <GitFork className="w-4 h-4" />
-                        {project.forks}
-                      </span>
+                        <ExternalLink className="w-4 h-4" />
+                        GitHub
+                      </a>
                     </div>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-primary-400 hover:text-primary-500"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      GitHub
-                    </a>
-                  </div>
 
-                  <div className="flex gap-2 pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <button
-                      onClick={() => handleEdit(project)}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-lg transition-colors"
-                    >
-                      <Edit className="w-4 h-4" />
-                      Modifier
-                    </button>
-                    <button
-                      onClick={() => handleDeleteProject(project.id)}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg transition-colors"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                      Supprimer
-                    </button>
+                    <div className="flex gap-2 pt-4 border-t border-gray-200 dark:border-gray-700">
+                      <button
+                        onClick={() => handleEdit(project)}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-lg transition-colors"
+                      >
+                        <Edit className="w-4 h-4" />
+                        Modifier
+                      </button>
+                      <button
+                        onClick={() => handleDeleteProject(project.id)}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg transition-colors"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                        Supprimer
+                      </button>
+                    </div>
                   </div>
+                ))}
+              </div>
+
+              {projects.length > ITEMS_PER_PAGE && (
+                <div className="flex justify-center items-center gap-4 mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
+                  <button
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    aria-label="Page précédente"
+                  >
+                    <ChevronLeft className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                  </button>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                    Page {currentPage} sur {Math.ceil(projects.length / ITEMS_PER_PAGE)}
+                  </span>
+                  <button
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(projects.length / ITEMS_PER_PAGE)))}
+                    disabled={currentPage === Math.ceil(projects.length / ITEMS_PER_PAGE)}
+                    className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    aria-label="Page suivante"
+                  >
+                    <ChevronRight className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                  </button>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           )}
         </div>
       </div>
