@@ -107,7 +107,7 @@ const Dashboard = () => {
                 Dashboard
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
-                Bienvenue, {user?.displayName || user?.email}!
+                Bienvenue Geek!👋
               </p>
             </div>
             <button
