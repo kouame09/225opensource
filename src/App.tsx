@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
+import { ToastProvider } from './contexts/ToastContext';
 import Header from './components/Header';
 import Home from './pages/Home';
 import AllProjects from './pages/AllProjects';
@@ -26,38 +27,40 @@ function App() {
 
   return (
     <AuthProvider>
-      <Router>
-        <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
-          <Header
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}
-            handleContribution={handleContribution}
-          />
+      <ToastProvider>
+        <Router>
+          <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+            <Header
+              darkMode={darkMode}
+              setDarkMode={setDarkMode}
+              handleContribution={handleContribution}
+            />
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/projects"
-              element={
-                <ProtectedRoute>
-                  <AllProjects />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/project/:name" element={<ProjectDetail />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </div>
-      </Router>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/projects"
+                element={
+                  <ProtectedRoute>
+                    <AllProjects />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/project/:name" element={<ProjectDetail />} />
+              <Route path="/auth" element={<AuthPage />} />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </div>
+        </Router>
+      </ToastProvider>
     </AuthProvider>
   );
 }

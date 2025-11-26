@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Star, GitFork, ExternalLink } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { useToast } from '../contexts/ToastContext';
 import { getUserProjects, createProject, updateProject, deleteProject } from '../services/projectService';
 import { Project } from '../types';
 import ProjectForm from '../components/ProjectForm';
 
 const Dashboard = () => {
   const { user } = useAuth();
+  const { showToast } = useToast();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -20,7 +22,7 @@ const Dashboard = () => {
 
   const loadProjects = async () => {
     if (!user) return;
-    
+
     setLoading(true);
     const userProjects = await getUserProjects(user.uid);
     setProjects(userProjects);
@@ -31,12 +33,17 @@ const Dashboard = () => {
     if (!user) return;
 
     const result = await createProject(projectData, user.uid);
-    
+
     if (result.error) {
       alert('Error creating project: ' + result.error);
     } else {
       setShowForm(false);
       loadProjects();
+      showToast(
+        `✅ Projet "${projectData.name}" ajouté avec succès !\n\n⚠️ Assurez-vous que votre dépôt GitHub est en mode public pour qu'il soit visible par tous.`,
+        'success',
+        7000
+      );
     }
   };
 
@@ -44,13 +51,18 @@ const Dashboard = () => {
     if (!editingProject || !user) return;
 
     const result = await updateProject(editingProject.id, projectData);
-    
+
     if (result.error) {
       alert('Error updating project: ' + result.error);
     } else {
       setEditingProject(null);
       setShowForm(false);
       loadProjects();
+      showToast(
+        `✅ Projet "${projectData.name}" modifié avec succès !`,
+        'success',
+        5000
+      );
     }
   };
 
@@ -58,11 +70,16 @@ const Dashboard = () => {
     if (!confirm('Are you sure you want to delete this project?')) return;
 
     const result = await deleteProject(projectId);
-    
+
     if (result.error) {
       alert('Error deleting project: ' + result.error);
     } else {
       loadProjects();
+      showToast(
+        `🗑️ Projet supprimé avec succès !`,
+        'info',
+        4000
+      );
     }
   };
 
@@ -148,7 +165,7 @@ const Dashboard = () => {
         {/* Projects List */}
         <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-3xl p-6 sm:p-8 lg:p-10 border border-gray-200 dark:border-gray-800">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Mes Projets</h2>
-          
+
           {loading ? (
             <div className="text-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-400 mx-auto"></div>
