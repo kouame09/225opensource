@@ -1,4 +1,4 @@
-import { Moon, Sun, Github, LogOut, FolderOpen } from 'lucide-react';
+import { Moon, Sun, Github, LogOut, FolderOpen, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { logout } from '../services/authService';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -40,13 +40,23 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
           <div className="flex items-center space-x-4">
             {isAuthenticated ? (
               <>
-                <button
-                  onClick={() => navigate('/projects')}
-                  className="inline-flex items-center space-x-2 px-4 py-2 bg-transparent text-gray-600 dark:text-gray-300 text-sm font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
-                >
-                  <FolderOpen className="w-4 h-4" />
-                  <span>Projets</span>
-                </button>
+                {location.pathname === '/projects' ? (
+                  <button
+                    onClick={() => navigate('/dashboard')}
+                    className="inline-flex items-center space-x-2 px-4 py-2 bg-transparent text-gray-600 dark:text-gray-300 text-sm font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+                  >
+                    <LayoutDashboard className="w-4 h-4" />
+                    <span>Dashboard</span>
+                  </button>
+                ) : location.pathname === '/dashboard' ? (
+                  <button
+                    onClick={() => navigate('/projects')}
+                    className="inline-flex items-center space-x-2 px-4 py-2 bg-transparent text-gray-600 dark:text-gray-300 text-sm font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+                  >
+                    <FolderOpen className="w-4 h-4" />
+                    <span>Projets</span>
+                  </button>
+                ) : null}
 
                 <button
                   onClick={handleContribution}

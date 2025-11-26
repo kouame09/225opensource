@@ -80,7 +80,7 @@ const ProjectDetail = () => {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
         {/* Back Button Skeleton */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
           <div className="h-10 w-24 bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse"></div>
         </div>
 
@@ -149,13 +149,13 @@ const ProjectDetail = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 animate-fade-in">
       {/* Back Button */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <button
-          onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-400 dark:hover:text-primary-400 transition-colors font-medium group"
+          onClick={() => navigate('/projects')}
+          className="inline-flex items-center gap-2 px-4 text-gray-400 dark:text-gray-400 hover:text-primary-400 dark:hover:text-primary-400 transition-colors font-medium group"
         >
           <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-          <span>Retour</span>
+          <span>Retour aux projets</span>
         </button>
       </div>
 
@@ -250,7 +250,7 @@ const ProjectDetail = () => {
                 <Github className="w-5 h-5" />
                 <span>Voir sur GitHub</span>
               </a>
-              
+
               <button
                 onClick={handleShare}
                 className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-white dark:bg-gray-800 text-primary-400 dark:text-primary-300 font-medium rounded-xl border-2 border-primary-400 dark:border-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200 hover:shadow-lg hover:shadow-primary-400/30 transform hover:scale-[1.02]"
