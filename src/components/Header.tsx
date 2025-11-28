@@ -32,8 +32,8 @@ const Header = ({ darkMode, setDarkMode, handleContribution }: HeaderProps) => {
               alt="225OpenSource Logo"
               className="w-12 h-12 rounded-lg"
             />
-            <h1 className={`text-2xl font-semibold text-primary-400 ${location.pathname === '/dashboard' ? 'hidden sm:block' : ''}`}>
-              225OS
+            <h1 className={`text-2xl font-semibold text-gray-700 dark:text-white ${location.pathname === '/dashboard' ? 'hidden sm:block' : ''}`}>
+              225<span className="text-primary-400">OS</span>
             </h1>
           </div>
 
