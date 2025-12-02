@@ -17,7 +17,7 @@ const AuthPage = () => {
               225 <span className="text-primary-400">OpenSource</span>
             </h1>
             <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
-              Découvrez, partagez et gérez des projets open-source de la vibrante communauté tech ivoirienne.
+              Gérez, découvrez et partagez des projets open-source avec la communauté tech ivoirienne.
             </p>
           </div>
 
