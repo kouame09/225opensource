@@ -9,7 +9,7 @@ const Hero = () => {
           </span>
         </h2>
         <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-          Plateforme collaborative de projets open-source portée par la communauté tech ivoirienne. Explorez, découvrez et contribuez à des projets passionnants.
+          Plateforme pour promouvoir l’open-source en Côte d’Ivoire. Explorez, découvrez et contribuez à des projets passionnants.
         </p>
       </div>
     </div>
