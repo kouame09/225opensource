@@ -137,7 +137,7 @@ const Register = ({ onToggleMode }: RegisterProps) => {
                   Accès restreint
                 </p>
                 <p className="text-orange-600 dark:text-orange-400 text-sm">
-                  Cette plateforme est réservée aux utilisateurs en Côte d'Ivoire uniquement.
+                  Cette plateforme est réservée exclusivement aux utilisateurs situés en Côte d’Ivoire.
                 </p>
               </div>
             </div>
