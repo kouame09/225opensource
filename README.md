@@ -1,3 +1,7 @@
+<div align="center">
+<img width="1200" height="475" alt="Le Kpao Banner" src="./public/hero-github.png" />
+</div>
+
 # 225 Open Source
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
