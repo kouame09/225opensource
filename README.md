@@ -198,11 +198,13 @@ Consultez les commentaires détaillés dans le fichier `src/data.ts` pour plus d
 - Firebase
 - Lucide Icons
 
-
-## Auteur
-
-Développé par Prince Kouamé et soutenu par la communauté tech ivoirienne.
-
 ## Licence
 
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## Développeur
+
+- **Prince Kouamé**
+- **Email** : [hello@princekouame.com](mailto:hello@princekouame.com)
+- **LinkedIn** : [LinkedIn](https://www.linkedin.com/in/princekouame/)
+- **Site web** : [Prince Kouamé](https://princekouame.com/)
