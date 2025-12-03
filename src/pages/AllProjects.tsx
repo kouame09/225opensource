@@ -4,13 +4,21 @@ import ProjectGrid from '../components/ProjectGrid';
 import Footer from '../components/Footer';
 import { Project } from '../types';
 import { getAllProjects } from '../services/projectService';
+import { parseAsString, parseAsStringEnum, useQueryState } from 'nuqs';
+
+type SortOrder = 'recent' | 'popular' | 'alphabetical';
+
+const sortParser = parseAsStringEnum<SortOrder>(['recent', 'popular', 'alphabetical']);
 
 const AllProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedTech, setSelectedTech] = useState<string>('');
-  const [sortBy, setSortBy] = useState<'recent' | 'popular' | 'alphabetical'>('recent');
+  const [searchQuery, setSearchQuery] = useQueryState('search', parseAsString.withDefault(""));
+  const [selectedTech, setSelectedTech] = useQueryState('tech', parseAsString.withDefault(""));
+  const [sortBy, setSortBy] = useQueryState(
+    'sort',
+    sortParser.withDefault("recent")
+  );
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -118,7 +126,13 @@ const AllProjects = () => {
                   Récent
                 </button>
                 <button
-                  onClick={() => setSortBy('popular')}
+                  onClick={() => {
+                    if (sortBy === "popular") {
+                      setSortBy('recent');
+                    } else {
+                      setSortBy('popular');
+                    }
+                  }}
                   className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${sortBy === 'popular'
                     ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                     : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
@@ -127,7 +141,13 @@ const AllProjects = () => {
                   Populaire
                 </button>
                 <button
-                  onClick={() => setSortBy('alphabetical')}
+                  onClick={() => {
+                    if (sortBy === "alphabetical") {
+                      setSortBy('recent');
+                    } else {
+                      setSortBy('alphabetical');
+                    }
+                  }}
                   className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${sortBy === 'alphabetical'
                     ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                     : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
@@ -157,7 +177,13 @@ const AllProjects = () => {
                 {allTechnologies.map((tech: string) => (
                   <button
                     key={tech}
-                    onClick={() => setSelectedTech(tech)}
+                    onClick={() => {
+                      if (tech === selectedTech) {
+                        setSelectedTech('');
+                      } else {
+                        setSelectedTech(tech);
+                      }
+                    }}
                     className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${selectedTech === tech
                       ? 'bg-primary-400 text-white shadow-lg shadow-primary-400/50'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
