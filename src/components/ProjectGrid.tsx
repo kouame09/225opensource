@@ -1,7 +1,8 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 import { Project } from '../types';
+import { parseAsInteger, useQueryState } from 'nuqs';
 
 interface ProjectGridProps {
   projects: Project[];
@@ -9,7 +10,11 @@ interface ProjectGridProps {
 }
 
 const ProjectGrid = ({ projects, loading = false }: ProjectGridProps) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useQueryState(
+    "page",
+    parseAsInteger.withDefault(1)
+  );
+
   const itemsPerPage = 6;
 
   // Calculer les projets à afficher pour la page actuelle
@@ -28,7 +33,7 @@ const ProjectGrid = ({ projects, loading = false }: ProjectGridProps) => {
   };
 
   const goToNextPage = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPages));
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
   const goToPage = (page: number) => {
