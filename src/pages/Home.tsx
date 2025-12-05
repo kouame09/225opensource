@@ -14,6 +14,7 @@ import CTA from '../components/CTA';
 import Contributors from '../components/Contributors';
 import BuyMeCoffee from '../components/BuyMeCoffee';
 import FeatureSection from '../components/FeatureSection';
+import WhySection from '../components/WhySection';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -71,6 +72,8 @@ const Home = () => {
 
       {/* Section Inspiration avec texte, chiffres et citation */}
       <InspirationSection />
+
+      <WhySection />
 
 
 

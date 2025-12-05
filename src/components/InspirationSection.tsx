@@ -8,19 +8,19 @@ const InspirationSection = () => {
         <div className="space-y-8">
           {/* Titre et description */}
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 dark:bg-primary-900/20 rounded-full border border-primary-200 dark:border-primary-800">
-              <span className="text-sm font-semibold text-primary-600 dark:text-primary-400">
-                Ensemble, nous innovons
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-primary-900/20 rounded-full border border-primary-200 dark:border-primary-800">
+              <span className="text-sm font-semibold text-green-600 dark:text-primary-400">
+                Notre objectif
               </span>
             </div>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white leading-tight">
-              L'écosystème <span className="block text-primary-400">Open Source</span>
-              <span className="block mt-2">de Côte d'Ivoire</span>
+              Créer une dynamique <span className="block text-primary-400">Open Source</span>
+              <span className="block mt-2">en Côte d'Ivoire</span>
             </h2>
             
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              Une communauté passionnée qui partage, collabore et construit des solutions innovantes pour transformer le paysage technologique ivoirien et africain de façon globale.
+              Notre objectif est de fédérer les talents ivoiriens autour de l'open source pour créer un écosystème technologique dynamique, autonome et innovant qui servira de modèle pour toute l'Afrique.
             </p>
           </div>
 
@@ -29,7 +29,7 @@ const InspirationSection = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-400">
                 <Code2 className="w-4 h-4 text-primary-400" />
-                <span>Projets Open Source</span>
+                <span>Solutions locales</span>
               </div>
             </div>
 
@@ -38,7 +38,7 @@ const InspirationSection = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-400">
                 <Users className="w-4 h-4 text-primary-400" />
-                <span>Développeurs actifs</span>
+                <span>Talents fédérés</span>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@ const InspirationSection = () => {
               <div className="relative w-2 h-2 bg-green-500 rounded-full" />
             </div>
             <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-              Communauté active et grandissante
+              Écosystème en croissance
             </span>
           </div>
         </div>
@@ -61,7 +61,7 @@ const InspirationSection = () => {
           <div className="absolute -inset-4 bg-gradient-to-br from-primary-100 to-purple-100 dark:from-primary-900/20 dark:to-purple-900/20 rounded-3xl opacity-50 blur-2xl" />
           
           {/* Carte de citation */}
-          <div className="relative bg-green-20 dark:bg-gray-900/10 rounded-2xl p-8 sm:p-10 border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <div className="relative bg-primary-20 dark:bg-gray-900/10 rounded-2xl p-8 sm:p-10 border border-gray-200 dark:border-gray-800 overflow-hidden">
             {/* Motif de lignes diagonales */}
             <div className="absolute top-0 left-0 right-0 h-24 opacity-10">
               <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +78,7 @@ const InspirationSection = () => {
             
             <blockquote className="space-y-6">
               <p className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white leading-relaxed">
-                "Chaque contribution est une graine plantée pour le développement de l'économie numérique de notre pays. 
+                "Ensemble, nous construisons une dynamique open source qui transforme la Côte d'Ivoire en hub technologique africain. 
                 <span className="block mt-3 text-primary-400">
                   Faisons de l’open-source ivoirien un véritable moteur d’innovation."
                 </span>
@@ -90,7 +90,7 @@ const InspirationSection = () => {
                     La communauté 225OS
                   </cite>
                   <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
-                    Création · Contribution · Innovation
+                    Fédérer · Innover · Rayonner
                   </p>
                 </div>
               </footer>
